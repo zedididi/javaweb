@@ -1,0 +1,65 @@
+body {
+    background: #f8f8f8;
+    text-align: left;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+strong { font-weight: 700; }
+.red { color: #eb4141; }
+a:hover { text-decoration: none; }
+
+.header {
+    margin-le: 10,10,10,10; /*外边距*/
+    padding-bottom: 5px;
+    background: #f8f8f8 url(../images/pattern.jpg) left top repeat;
+    border-top: 3px solid #eb4141;
+    -moz-box-shadow: 0 0px 5px 0 rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0px 5px 0 rgba(0,0,0,.3);
+    box-shadow: 0 0px 5px 0 rgba(0,0,0,.3);
+}
+
+.list {
+    width: 30%;
+    height: 512px;
+    top: 10px;
+    left: 2px;
+    padding-bottom: 5px;
+    background: #f8f8f8 url(../images/pattern.jpg) left top repeat;
+    -moz-box-shadow: 1px 0px 0px 0 rgba(0,0,0,.3);
+    -webkit-box-shadow: 1px 0px 0px 0 rgba(0,0,0,.3);
+    box-shadow: 1px 0px 0px 0 rgba(0,0,0,.3);
+}
+
+
+
+.login h1 {
+    padding-left: 50px;
+    font-family: 'Oleo Script', cursive;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.login h1 a { color: #555; }
+
+.links {
+    text-align: right;
+}
+
+.links a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 15px 0 0 20px;
+}
+
+.links a.login { background: url(../images/login.png) center center no-repeat; }
+.links a.logout { background: url(../images/logout.png) center center no-repeat; }
+.links a.car { background: url(../images/car.png) center center no-repeat; }
+.links a.register { background: url(../images/register.png) center center no-repeat; margin-right: 50px; }
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resume</title>
+    <style>
+        div{
+            text-align: center;
+        }
+        form{
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+<form action="servlets/DealWithServlet" method="post">
+    <fieldset>
+        <legend>个人信息：</legend>
+    <label>姓&nbsp;&nbsp;&nbsp;名：<input type="text" name="name" required /></label><br>
+    <label>邮&nbsp;&nbsp;&nbsp;政：<input type="email" name="email" required /></label><br>
+    <label>国&nbsp;&nbsp;&nbsp;家：<input type="text" name="country" required></label><br>
+    <label>城&nbsp;&nbsp;&nbsp;市：<input type="text" name="city" required></label><br>
+    <label>县&nbsp;&nbsp;&nbsp;区：<input type="text" name="county" required></label><br>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>个人简历：</legend>
+        <label>简&nbsp;&nbsp;&nbsp;历：</label><br>
+        <textarea cols="30" rows="10" name="resume"></textarea>
+    </fieldset>
+    <div>
+        <input type="submit" value="submit">
+    </div>
+</form>
+</div>
+</body>
+</html>
