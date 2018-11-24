@@ -22,8 +22,8 @@
             <span class="red">.</span></h1>
         </div>
         <div class="links span8">
-          <a class="login" href="login.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="image/login.png"></a>
-          <a class="register" href="register.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="image/register.png"></a>
+          <a class="login" href="login.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="images/login.png"></a>
+          <a class="register" href="register.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="images/register.png"></a>
         </div>
       </div>
     </div>
