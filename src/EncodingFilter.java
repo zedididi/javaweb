@@ -10,10 +10,14 @@ import java.io.IOException;
  */
 @WebFilter(filterName = "EncodingFilter")
 public class EncodingFilter implements Filter {
+
+   // private static final long serialVersionUID=1L;
+
     public void destroy() {}
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         chain.doFilter(request, response);
     }
 

@@ -58,6 +58,7 @@
     <index id="20" parent="6" name="sqlite_autoindex_book_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="21" parent="6">
@@ -92,6 +93,7 @@
     <index id="27" parent="7" name="sqlite_autoindex_category_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="28" parent="7">
@@ -231,16 +233,23 @@
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="59" parent="12" name="sqlite_autoindex_user_1">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>username</ColNames>
+    <index id="59" parent="12" name="user_id_uindex">
+      <ColNames>id</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="60" parent="12">
+    <index id="60" parent="12" name="sqlite_autoindex_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="61" parent="12">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="61" parent="12">
+    <key id="62" parent="12">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_user_1</UnderlyingIndexName>
     </key>

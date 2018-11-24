@@ -6,7 +6,7 @@
   Time: 10:16
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.sql.*" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*,connectDB.*" contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>网上书店</title>
@@ -33,10 +33,9 @@
       <ul class="nav nav-list">
         <li class="nav-header">书籍管理</li>
         <%
-          Class.forName("org.sqlite.JDBC");
-          String url="jdbc:sqlite:C:\\Users\\16051\\javaweb\\resource\\bookstore.db";
+
           String sql="select id,name,description from category";
-          Connection conn=DriverManager.getConnection(url);
+          Connection conn=new getConn().getConn();
           Statement stat=conn.createStatement();
           ResultSet rs=stat.executeQuery(sql);
           while (rs.next())

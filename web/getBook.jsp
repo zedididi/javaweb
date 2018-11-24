@@ -5,19 +5,19 @@
   Time: 16:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.sql.*" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*,connectDB.*" contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>getBook</title>
 </head>
 <body>
 <%
-    Class.forName("org.sqlite.JDBC");
+
     String url="jdbc:sqlite:C:\\Users\\16051\\javaweb\\resource\\bookstore.db";
     String sql = "select id,name,author,price,image,description,category_id from book" +
             " where category_id = ?";
     String categoryID = request.getParameter("id");
-    Connection conn = DriverManager.getConnection(url);
+    Connection conn = new getConn().getConn();
     PreparedStatement pstat = conn.prepareStatement(sql);
     pstat.setString(1,categoryID);
     ResultSet rs = pstat.executeQuery();

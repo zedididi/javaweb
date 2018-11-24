@@ -12,6 +12,7 @@
 </head>
 <body>
 <%
+    request.setCharacterEncoding("UTF-8");
     String id=request.getParameter("id");
     String pwd=request.getParameter("pwd");
     out.println("id:"+id+"<br>");
