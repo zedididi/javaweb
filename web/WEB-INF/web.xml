@@ -3,4 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <context-param>
+        <param-name>encoding</param-name>
+        <param-value>gb2312</param-value>
+    </context-param>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>DealWithServlet</servlet-name>
+        <servlet-class>servlets.DealWithServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DealWithServlet</servlet-name>
+        <url-pattern>/servlets/DealWithServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
