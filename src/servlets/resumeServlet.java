@@ -44,8 +44,13 @@ public class resumeServlet extends HttpServlet {
         Cookie userCookie=new Cookie(user.getId(),user.getUsername());
         userCookie.setMaxAge(60*60*24*7);
         response.addCookie(userCookie);
-        PrintWriter out=response.getWriter();
-        out.println(user.toString());
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><title>get cookies</title>");
+        out.println("<body><h2>A cookie has been got from brower</h2>");
+        out.println("UserName:" + user.getUsername() + "<br>");
+        out.println("Address:" + user.getAddress() + "<br>");
+        out.println("</body></html>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
