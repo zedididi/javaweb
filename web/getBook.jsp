@@ -13,7 +13,6 @@
 <body>
 <%
 
-    String url="jdbc:sqlite:C:\\Users\\16051\\javaweb\\resource\\bookstore.db";
     String sql = "select id,name,author,price,image,description,category_id from book" +
             " where category_id = ?";
     String categoryID = request.getParameter("id");
@@ -39,7 +38,7 @@
 </div>
 <%
     }
-    pstat.close();
+     pstat.close();
     conn.close();
 %>
 </body>
