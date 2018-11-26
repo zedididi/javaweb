@@ -6,7 +6,7 @@
   Time: 10:16
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.sql.*,connectDB.*" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*,dao.*" contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>网上书店</title>
@@ -22,8 +22,8 @@
             <span class="red">.</span></h1>
         </div>
         <div class="links span8">
-          <a class="login" href="login.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="images/login.png"></a>
-          <a class="register" href="register.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="images/register.png"></a>
+          <a class="login" href="client/login.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="images/login.png"></a>
+          <a class="register" href="client/register.html" rel="tooltip" data-placement="bottom" data-toggle="modal" data-target="#myModal" ><img src="images/register.png"></a>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
     </div><%--左侧菜单div控制--%>
 
     <div class="col-md-9" id="book"><%--书籍布局控制--%>
-
+     <%--Ajax的嵌入点--%>
     </div>
   </div><%--下方左右div控制--%>
 

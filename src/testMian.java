@@ -1,5 +1,5 @@
-import connectDB.getUser;
-import model.user;
+import dao.getUser;
+import vo.user;
 
 /**
  * @auther: Liu Zedi.
