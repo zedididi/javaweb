@@ -5,7 +5,9 @@
   Time: 16:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.sql.*,connectDB.*" contentType="text/html;charset=UTF-8" language="java" %>
+<%--从数据库获取相应类型的所有书本--%>
+<%@ page import="java.sql.*,dao.*" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="dao.getConn" %>
 <html>
 <head>
     <title>getBook</title>
@@ -25,7 +27,7 @@
 %>
 <div class="col-sm-9 col-md-3" >
     <div class="thumbnail" >
-        <img src="images/book.jpg">
+        <img src="../images/book.jpg">
         <div class="caption">
             <h4><%=rs.getString("name")%></h4>
             <p><%=rs.getString("description")%></p>

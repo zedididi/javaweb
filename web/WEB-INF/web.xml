@@ -12,10 +12,10 @@
     </welcome-file-list>
     <servlet>
         <servlet-name>resumeServlet</servlet-name>
-        <servlet-class>servlets.resumeServlet</servlet-class>
+        <servlet-class>controller.resumeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>resumeServlet</servlet-name>
-        <url-pattern>/servlets/resumeServlet</url-pattern>
+        <url-pattern>/controller/resumeServlet</url-pattern>
     </servlet-mapping>
 </web-app>

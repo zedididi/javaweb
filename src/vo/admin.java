@@ -1,4 +1,4 @@
-package model;
+package vo;
 
 /**
  * @auther: Liu Zedi.
@@ -6,6 +6,8 @@ package model;
  * @package: model
  * @project: javaweb
  */
+
+//管理员信息
 public class admin {
     private String id;
     private String adminname;

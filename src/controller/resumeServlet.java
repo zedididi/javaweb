@@ -1,8 +1,8 @@
-package servlets;
+package controller;
 
-import connectDB.getUser;
-import connectDB.insertUser;
-import model.user;
+import dao.getUser;
+import dao.insertUser;
+import vo.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

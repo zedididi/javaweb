@@ -1,7 +1,7 @@
-package servlets;
+package controller;
 
-import connectDB.getAdmin;
-import model.admin;
+import dao.getAdmin;
+import vo.admin;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

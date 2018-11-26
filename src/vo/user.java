@@ -1,4 +1,4 @@
-package model;
+package vo;
 
 /**
  * @auther: Liu Zedi.
@@ -6,6 +6,8 @@ package model;
  * @package: model
  * @project: javaweb
  */
+
+//用户信息
 public class user {
     private String id;
     private String username;

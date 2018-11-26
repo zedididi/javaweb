@@ -1,7 +1,6 @@
-package connectDB;
+package dao;
 
-import model.admin;
-import model.user;
+import vo.admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +13,8 @@ import java.sql.SQLException;
  * @package: connectDB
  * @project: javaweb
  */
+
+//获取管理员信息，管理员名为查询凭证
 public class getAdmin {
 
     public admin getAdmin(String adminname){

@@ -1,3 +1,4 @@
+/*前端页面的js代码*/
 function showBook(categoryID) {
     xmlHttp.onreadystatechange=function () {
         if (xmlHttp.readyState==4){
@@ -7,6 +8,6 @@ function showBook(categoryID) {
             }
         }
     }
-    xmlHttp.open("GET","getBook.jsp?id="+categoryID,true);
+    xmlHttp.open("GET","client/getBook.jsp?id="+categoryID,true);
     xmlHttp.send();
 }

@@ -1,7 +1,7 @@
-<%@ page import="model.admin" %>
+<%@ page import="vo.admin" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="connectDB.getConn" %>
+<%@ page import="dao.getConn" %>
 <%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: 16051
@@ -9,19 +9,20 @@
   Time: 19:30
   To change this template use File | Settings | File Templates.
 --%>
+<%--后台管理页面--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
     <title>backgroundDataQuery</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body onload="initAJAX()">
 <%
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
-    admin admin= (model.admin) session.getAttribute("admin");
+    admin admin= (vo.admin) session.getAttribute("admin");
     //out.print("admin "+admin.toString());
 %>
 <div class="header">
@@ -61,10 +62,10 @@
                 conn.close();
             %>--%>
             <li class="nav-header">全部用户订单</li>
-            <li><a href="no.html">初始订单</a> </li>
-            <li><a href="no.html">已完成订单</a> </li>
+            <li><a href="../no.html">初始订单</a> </li>
+            <li><a href="../no.html">已完成订单</a> </li>
             <li class="nav-header">用户信息查询</li>
-            <li><a href="no.html">用户信息查询</a> </li>
+            <li><a href='javascript:getUser()'>用户信息查询</a> </li>
         </ul>
     </div><%--左侧菜单div控制--%>
 
@@ -82,9 +83,9 @@
         </div>
     </div>
 </div>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/commons.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bgDataQuery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/commons.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bgDataQuery.js"></script>
 </body>
 </html>

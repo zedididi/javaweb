@@ -1,17 +1,18 @@
+<!--注册界面-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>register</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="modal-title">
     <h1 class="text-center">注册</h1>
 </div>
 <div class="modal-body">
-    <form class="form-group" action="../servlets/resumeServlet" method="post" accept-charset="utf-8" >
+    <form class="form-group" action="../controller/resumeServlet" method="post" accept-charset="utf-8" > //我是用servlets写的，我觉得不太好，也可以用，在servlet上加上重定向到登陆成功后的界面就好
         <div class="form-group">
             <label>用户名</label>
             <input name="username" class="form-control" type="text" placeholder="请输入用户名" required>

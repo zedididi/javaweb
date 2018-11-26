@@ -1,6 +1,6 @@
-package connectDB;
+package dao;
 
-import model.user;
+import vo.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,11 @@ import java.sql.SQLException;
  * @package: connectDB
  * @project: javaweb
  */
+
+//插入用户信息，id自增
 public class insertUser {
+
+
     public boolean insertUser(user user){
         boolean result=false;
         int i=0;

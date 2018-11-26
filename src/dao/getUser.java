@@ -1,7 +1,7 @@
-package connectDB;
+package dao;
 
 
-import model.user;
+import vo.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +14,8 @@ import java.sql.SQLException;
  * @package: connectDB
  * @project: javaweb
  */
+
+//查询用户信息,用户名为查询凭证
 public class getUser {
 
     public user getUser(String username){

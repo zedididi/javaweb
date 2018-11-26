@@ -1,4 +1,4 @@
-package connectDB;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,9 @@ import java.sql.SQLException;
  * @package: connectDB
  * @project: webHomework
  */
+//连接数据库
 public class getConn {
+
 
     public  Connection getConn() {
 

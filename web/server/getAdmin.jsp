@@ -5,8 +5,10 @@
   Time: 10:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="model.*" contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="connectDB.getAdmin" %>
+
+<%--判断管理登陆信息是否正确--%>
+<%@ page import="vo.*,dao.*" contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Title</title>

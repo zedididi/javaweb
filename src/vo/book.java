@@ -1,4 +1,4 @@
-package model;
+package vo;
 
 /**
  * @auther: Liu Zedi.
@@ -6,6 +6,12 @@ package model;
  * @package: model
  * @project: javaweb
  */
+
+//前端显示书本信息
+
+    //description :书本信息的表述
+    //category_id ：书本对应的类型id  要联合查询book表与category表
+    //category_description  :这一类书本的描述
 public class book {
     private String id;
     private String name;

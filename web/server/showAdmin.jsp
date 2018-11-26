@@ -1,10 +1,11 @@
-<%@ page import="model.admin" %><%--
+<%@ page import="vo.admin" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/25
   Time: 20:47
   To change this template use File | Settings | File Templates.
 --%>
+<%--获取管理员信息并输出到后台页面--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,7 +15,7 @@
 <%
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
-    admin admin= (model.admin) session.getAttribute("admin");
+    admin admin= (vo.admin) session.getAttribute("admin");
     //out.print("admin "+admin.toString());
 %>
 <div class="caption" style="text-align-all: center">

@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.books" %><%--
+<%@ page import="vo.books" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/25
@@ -19,7 +19,7 @@
     ArrayList<books> list= (ArrayList) session.getAttribute("books");
     if (list==null){
         list=new ArrayList();
-        list.add(new books(null,bookname,String.valueOf(1)));
+        //list.add(new books(null,bookname,String.valueOf(1)));
         session.setAttribute("books",list);
         System.out.println("不存在购车");
     }else {
@@ -32,7 +32,7 @@
             }
         }
         if (!x){
-            list.add(new books(null,bookname,String.valueOf(1)));
+           //  list.add(new books(null,bookname,String.valueOf(1)));
             session.setAttribute("books",list);
         }
     }

@@ -1,4 +1,4 @@
-package model;
+package vo;
 
 /**
  * @auther: Liu Zedi.
@@ -6,7 +6,10 @@ package model;
  * @package: model
  * @project: javaweb
  */
+
+//用于储存购物车单类书本的信息
 public class books {
+
     private String id;
     private String username;
     private String bookname;
