@@ -32,7 +32,7 @@
             <h4><%=rs.getString("name")%></h4>
             <p><%=rs.getString("description")%></p>
             <p>
-                <a href='javascript:shop("<%=rs.getString("name")%>")' class="btn btn-primary" role="button">加入购物车</a>
+                <a href='#' class="btn btn-primary" role="button">加入购物车</a>
                 <a href="#" class="btn btn-default" role="button">查看详情</a>
             </p>
         </div>
@@ -43,7 +43,7 @@
      pstat.close();
     conn.close();
 %>
-<script>
+<%--<script>
     function shop(bookName) {
         xmlHttp.onreadystatechange=function () {
             if (xmlHttp.readyState==4){
@@ -55,6 +55,6 @@
         xmlHttp.open("GET","setSession.jsp?name="+bookName,true);
         xmlHttp.send();
     }
-</script>
+</script>--%>
 </body>
 </html>
