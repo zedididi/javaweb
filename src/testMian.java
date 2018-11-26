@@ -1,5 +1,5 @@
 import dao.getUser;
-import vo.user;
+import model.user;
 
 /**
  * @auther: Liu Zedi.

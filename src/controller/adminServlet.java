@@ -1,7 +1,7 @@
 package controller;
 
 import dao.getAdmin;
-import vo.admin;
+import model.admin;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

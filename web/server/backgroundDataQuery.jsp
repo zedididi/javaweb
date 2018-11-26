@@ -1,4 +1,4 @@
-<%@ page import="vo.admin" %>
+<%@ page import="model.admin" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="dao.getConn" %>
@@ -22,7 +22,7 @@
 <%
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
-    admin admin= (vo.admin) session.getAttribute("admin");
+    admin admin= (model.admin) session.getAttribute("admin");
     //out.print("admin "+admin.toString());
 %>
 <div class="header">

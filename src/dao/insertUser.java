@@ -1,6 +1,6 @@
 package dao;
 
-import vo.user;
+import model.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -2,7 +2,7 @@ package controller;
 
 import dao.getUser;
 import dao.insertUser;
-import vo.user;
+import model.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
