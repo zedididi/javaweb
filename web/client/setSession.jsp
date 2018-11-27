@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="vo.books" %><%--
+<%@ page import="model.books" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/25
