@@ -9,6 +9,7 @@
 <%@ page import="java.sql.*" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="controller.adminServlet" %>
 <%@ page import="dao.getAdmin" %>
+<%@ page import="dao.getConn" %>
 <html>
 <head>
     <title>网上书店</title>
