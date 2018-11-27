@@ -37,7 +37,7 @@
     <div class="col-md-3"> <%--左侧菜单div控制--%>
         <ul class="nav nav-list">
             <li class="nav-header">书籍管理</li>
-            <%--<%
+            <%
 
                 String sql = "select id,name,description from category";
                 getConn connectionUtil = new getConn();
@@ -54,7 +54,7 @@
                 }
                 stat.close();
                 conn.close();
-            %>--%>
+            %>
         </ul>
     </div>
     <%--左侧菜单div控制--%>
