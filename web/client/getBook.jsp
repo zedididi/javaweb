@@ -48,11 +48,10 @@
         xmlHttp.onreadystatechange=function () {
             if (xmlHttp.readyState==4){
                 if (xmlHttp.status==200){
-
                 }
             }
         }
-        xmlHttp.open("GET","setSession.jsp?name="+bookName,true);
+        xmlHttp.open("GET","setSession.jsp?name=bookName",true);
         xmlHttp.send();
     }
 </script>--%>
