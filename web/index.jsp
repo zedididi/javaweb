@@ -79,8 +79,8 @@
 <script src="js/commons.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/dataQuery.js"></script>
-<script language="JavaScript">
-    /* function showBook(categoryID) {
+<%--<script language="JavaScript">
+     function showBook(categoryID) {
          xmlHttp.onreadystatechange=function () {
              if (xmlHttp.readyState==4){
                  if (xmlHttp.status==200){
@@ -91,7 +91,7 @@
          }
          xmlHttp.open("GET","getBook.jsp?id="+categoryID,true);
          xmlHttp.send();
-     }*/
-</script>
+     }
+</script>--%>
 </body>
 </html>

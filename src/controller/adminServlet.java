@@ -38,7 +38,7 @@ public class adminServlet extends HttpServlet {
             System.out.println(session.getAttribute("admin").toString());
         }
         else
-            response.sendRedirect("../admin.html");
+            response.sendRedirect("..service/admin.html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
