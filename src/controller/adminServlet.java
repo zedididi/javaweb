@@ -32,7 +32,7 @@ public class adminServlet extends HttpServlet {
         String adminname = request.getParameter("adminname");
         String password = request.getParameter("password");
         admin admin = new getAdmin().getAdmin(adminname);
-        if (admin != null & admin.getPassword().equals(password)) {
+        if (admin != null && admin.getPassword().equals(password)) {
             HttpSession session = request.getSession();
             session.setAttribute("admin", admin);
             System.out.println(session.getAttribute("admin").toString());
