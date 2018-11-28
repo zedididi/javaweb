@@ -17,6 +17,9 @@
     <title>backgroundDataQuery</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        col-md-3
+    </style>
 </head>
 <body onload="initAJAX()">
 <%
@@ -62,7 +65,7 @@
                 conn.close();
             %>--%>
             <li class="nav-header">全部用户订单</li>
-            <li><a href="../no.html">初始订单</a> </li>
+            <li><a href="../no.html" target="iframe1">初始订单</a> </li>
             <li><a href="../no.html">已完成订单</a> </li>
             <li class="nav-header">用户信息查询</li>
             <li><a href='javascript:getUser()'>用户信息查询</a> </li>
@@ -70,7 +73,9 @@
     </div><%--左侧菜单div控制--%>
 
     <div class="col-md-9" id="book"><%--书籍布局控制--%>
+        <iframe id="iframe1">
 
+        </iframe>
     </div>
 </div><%--下方左右div控制--%>
 
