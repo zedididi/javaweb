@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="login span4">
-                <h1><a href=""> 欢迎来到<strong>我的</strong>书店</a>
+                <h1><a href="server/admin.html"> 欢迎来到<strong>我的</strong>书店</a>
                     <span class="red">.</span></h1>
             </div>
             <div class="links span8">
@@ -79,8 +79,8 @@
 <script src="js/commons.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/dataQuery.js"></script>
-<script language="JavaScript">
-    /* function showBook(categoryID) {
+<%--<script language="JavaScript">
+     function showBook(categoryID) {
          xmlHttp.onreadystatechange=function () {
              if (xmlHttp.readyState==4){
                  if (xmlHttp.status==200){
@@ -91,7 +91,7 @@
          }
          xmlHttp.open("GET","getBook.jsp?id="+categoryID,true);
          xmlHttp.send();
-     }*/
-</script>
+     }
+</script>--%>
 </body>
 </html>

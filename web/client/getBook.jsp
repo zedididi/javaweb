@@ -12,6 +12,12 @@
 <head>
     <title>getBook</title>
 </head>
+<style>
+    .operation{
+        position: absolute;
+        bottom: 20px;
+    }
+</style>
 <body>
 <%
 
@@ -31,10 +37,10 @@
         <div class="caption">
             <h4><%=rs.getString("name")%></h4>
             <p><%=rs.getString("description")%></p>
-            <p>
+            <div class="operation">
                 <a href='#' class="btn btn-primary" role="button">加入购物车</a>
                 <a href="#" class="btn btn-default" role="button">查看详情</a>
-            </p>
+            </div>
         </div>
     </div>
 </div>
