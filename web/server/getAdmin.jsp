@@ -19,11 +19,11 @@
     String adminname=request.getParameter("adminname");
     String password=request.getParameter("password");
     admin admin=new getAdmin().getAdmin(adminname);
-    if (admin!=null&admin.getPassword().equals(password)){
+    if (admin!=null&&admin.getPassword().equals(password)){
         session.setAttribute("admin",admin);
         System.out.println(session.getAttribute("admin").toString());
         %>
-       <jsp:forward page="backgroundDataQuery.jsp"></jsp:forward>
+       <jsp:forward page="adminUI.jsp"></jsp:forward>
 <%
     }
     else

@@ -9,7 +9,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>showAdmin</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        li{
+            font-weight: initial;
+            font-style: italic;
+            font-family: 方正兰亭超细黑简体;
+        }
+    </style>
 </head>
 <body>
 <%
@@ -18,7 +28,7 @@
     admin admin= (model.admin) session.getAttribute("admin");
     //out.print("admin "+admin.toString());
 %>
-<div class="caption" style="text-align-all: center">
+<div class="modal-body" style="text-align-all: center">
     <h2>管理员信息：</h2>
     <br>
     <ul>
@@ -27,6 +37,7 @@
         <li>密码：<%=admin.getPassword()%></li>
     </ul>
 </div>
-
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
