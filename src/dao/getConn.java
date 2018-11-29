@@ -14,10 +14,10 @@ import java.sql.SQLException;
 public class getConn {
 
 
-    public static Connection getConn() {
+    public  Connection getConn() {
 
         String driver = "org.sqlite.JDBC";
-        String url = "jdbc:sqlite:D://bookstore.db";
+        String url = "jdbc:sqlite:D:\\Bookstore\\resource\\bookstore.db";
         Connection conn = null;
         try {
             Class.forName(driver); //classLoader,加载对应驱动
