@@ -109,7 +109,7 @@
         <td><%=order.getPrice()%></td>
         <td id="th1"><select>
             <option>初始</option>
-            <option><a href='javascript:setState()' >已完成</a></option>
+            <option><a onclick="setState()">已完成</a></option>
         </select></td>
     </tr>
 </table>

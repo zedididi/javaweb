@@ -1,7 +1,6 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.DriverManager" %>
 <%@ page import="dao.getConn" %><%--
   Created by IntelliJ IDEA.
   User: 16051
@@ -29,10 +28,11 @@
                     <span class="red">.</span></h1>
             </div>
             <div class="links span8">
-                <a class="car" href="client/ShowShoppingCar_.jsp"></a>
-                <a class="login" rel="tooltip" data-placement="bottom" data-
-                   placement="bottom" data-toggle="modal" data-target="#myModal"></a>
-                <a class="register"  rel="tooltip" data-placement="bottom"
+                <a class="car" rel="tooltip" data-placement="bottom" data-
+                   placement="bottom" data-toggle="modal" href="client/ShowShoppingCar_.jsp"></a>
+                <a class="login" href="client/login.html" rel="tooltip" data-placement="bottom" data-
+                   placement="bottom"  data-toggle="modal" data-target="#myModal"></a>
+                <a class="register" href="client/register.html" rel="tooltip" data-placement="bottom"
                    data-toggle="modal" data-target="#myModal"></a>
             </div>
         </div>
@@ -72,8 +72,7 @@
         </div>
     </div>
 </div>
-</body>
-<script>
+<script language="JavaScript">
     function showBook(categoryID) {
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4) {
@@ -97,5 +96,6 @@
         xmlHttp.send();
     }
 </script>
+</body>
 </html>
 

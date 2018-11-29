@@ -17,7 +17,7 @@ public class getConn {
     public  Connection getConn() {
 
         String driver = "org.sqlite.JDBC";
-        String url = "jdbc:sqlite:D:\\Bookstore\\resource\\bookstore.db";
+        String url = "jdbc:sqlite:C:\\Users\\16051\\javaweb\\resource\\bookstore.db";
         Connection conn = null;
         try {
             Class.forName(driver); //classLoader,加载对应驱动
