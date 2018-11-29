@@ -20,7 +20,6 @@
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
     admin admin= (model.admin) session.getAttribute("admin");
-    //out.print("admin "+admin.toString());
 %>
 <div class="header">
     <div class="container">
@@ -44,23 +43,6 @@
         <ul class="nav nav-list">
             <li class="nav-header" style="font-size: large;font-style: oblique;font-weight: bold">后台功能</li>
             <br>
-            <%--<%
-
-                String sql = "select id,name,description from category";
-                getConn connectionUtil = new getConn();
-                Connection conn = connectionUtil.getConn();
-                Statement stat = conn.createStatement();
-                ResultSet rs = stat.executeQuery(sql);
-                while (rs.next()) {
-            %>
-            <li>
-                <a href='javascript:showBook("<%=rs.getString("id")%>")'><%=rs.getString("name")%></a>
-            </li>
-            <%
-                }
-                stat.close();
-                conn.close();
-            %>--%>
             <li class="nav-header">全部用户订单</li>
             <li><a href='javascript:setIframe("getInitOrder.jsp")' >初始订单</a> </li>
             <li><a href='javascript:setIframe("getFinishOrder.jsp")'>已完成订单</a> </li>

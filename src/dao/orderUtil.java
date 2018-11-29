@@ -71,9 +71,11 @@ public class orderUtil {
         ArrayList<orderItem> orderItemArrayList=new ArrayList<>();
         boolean result=false;
 
+        int tset=0;
         java.util.Date order_date=null;
         double order_price=0;
         boolean order_state = false;
+        orderUtil orderUtil=new orderUtil();
 
 
         String sql="select orderitem.id,orders.ordertime,orders.price,orders.state from orderitem,orders where orderitem.order_id=orders.id and orders.id=?";
@@ -82,14 +84,14 @@ public class orderUtil {
                 pstat.setInt(1,id);
                 set=pstat.executeQuery();
 
-                if (set.next()){
+                while (set.next()){
                     result=true;
                     int orderitem_id=set.getInt(1);
                     order_date= new Date((Long) set.getObject(2)) ;
                     order_price=set.getDouble(3);
                     order_state=set.getBoolean(4);
 
-                    orderItem=new orderUtil().getOrderItem(orderitem_id);
+                    orderItem=orderUtil.getOrderItem(orderitem_id);
                     orderItemArrayList.add(orderItem);
                 }
                 if (result) {
@@ -130,7 +132,7 @@ public class orderUtil {
                 pstat.setBoolean(2,true);
                 set=pstat.executeQuery();
 
-                if (set.next()){
+                while (set.next()){
 
                     result=true;
                     int orders_id=set.getInt(1);

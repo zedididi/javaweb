@@ -1,9 +1,8 @@
 <%@ page import="dao.getUser" %>
 <%@ page import="dao.orderUtil" %>
-<%@ page import="model.order" %>
-<%@ page import="model.user" %>
-<%@ page import="model.userOrders" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/29
@@ -16,8 +15,9 @@
     <title>initOrders</title>
     <style>
         table.hovertable {
+            margin-top: 2px;
+            margin-bottom: 0px;
             text-align: center;
-            margin-top: 50px;
             font-family: verdana,arial,sans-serif;
             font-size:15px;
             color:#333333;
@@ -64,14 +64,14 @@
     request.setCharacterEncoding("utf-8");
     String search=request.getParameter("search");
     if (search!=null){
-        out.println(search);
         user user=new getUser().getUser(search);
         if (user!=null){
-            out.println(user);
-            userOrders userOrders=new orderUtil().getUserOrders(1,1);
-            out.println(userOrders);
+            //out.println(user);
+            userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(user.getId()),1);
+            //out.println(userOrders);
             if (userOrders!=null){
                 ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 %>
 <table class="hovertable" border="1" width="100%">
     <caption><h2>初始订单</h2></caption>
@@ -88,11 +88,55 @@
         <td><%=userOrders.getPrice()%></td>
     </tr>
 </table>
+
 <%
                 for (order order:orderArrayList
                      ) {
-
-                }
+ %>
+<table class="hovertable" border="1" width="100%">
+    <tr>
+        <th>订单号</th>
+        <th>订单时间</th>
+        <th>订单金额</th>
+        <th>订单状态</th>
+    </tr>
+    <tr>
+        <td><%=order.getId()%></td>
+        <td><%=sdf.format(order.getDate())%></td>
+        <td><%=order.getPrice()%></td>
+        <td>已完成</td>
+    </tr>
+</table>
+<table class="hovertable" width="100%" border="1">
+    <tr>
+        <th>子订单号</th>
+        <th>书本序号</th>
+        <th>书名</th>
+        <th>类型</th>
+        <th>数量</th>
+        <th>单价</th>
+        <th>子订单金额</th>
+    </tr>
+<%
+                    ArrayList<orderItem> orderItemArrayList=order.getOrderItemArrayList();
+                    for (orderItem orderItem:orderItemArrayList
+                         ) {
+                        %>
+<tr>
+    <td><%=orderItem.getId()%></td>
+    <td><%=orderItem.getBook().getId()%></td>
+    <td><%=orderItem.getBook().getName()%></td>
+    <td><%=orderItem.getBook().getCategory_name()%></td>
+    <td><%=orderItem.getQuantity()%></td>
+    <td><%=orderItem.getBook().getPrice()%></td>
+    <td><%=orderItem.getPrice()%></td>
+</tr>
+<%
+                    }
+                    %>
+</table>
+    <%
+                 }
             }
         }
     }

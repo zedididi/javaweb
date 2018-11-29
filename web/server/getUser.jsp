@@ -79,20 +79,6 @@
             <th >邮箱</th>
             <th >地址</th>
         </tr>
-
-       <%-- <%
-            out.print("<tr>\n" +
-                    "<td>"+i+"</td>\n" +
-                    "<td>"+user.getId()+"</td>\n" +
-                    "<td>"+user.getUsername()+"</td>\n" +
-                    "<td>"+user.getPassword()+"</td>]\n" +
-                    "<td>"+user.getCellphone()+"</td>\n" +
-                    "<td>"+user.getPhone()+"</td>\n" +
-                    "<td>"+user.getEmail()+"</td>\n" +
-                    "<td"+user.getAddress()+"</td>\n" +
-                    "</tr>\n");
-        %>--%>
-        <br>
         <tr>
             <td><%=i%></td>
             <td><%=user.getId()%></td>
@@ -112,7 +98,7 @@
     }
     else{
         %>
-    <li>不存在</li>
+    <li>此用户不存在</li>
 
 <%
     }
