@@ -12,7 +12,7 @@ import java.util.List;
 public class BookDAO {
     public static List<BookModel> queryBook(int category_id){
         List<BookModel> list = new ArrayList<>();
-        Connection conn = getConn.getConn();
+        Connection conn = new getConn().getConn();
         String sql = "select id,name,author,price,image,description,category_id from book where category_Id = ?";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -32,7 +32,7 @@ public class BookDAO {
     //根据书本ID查询书籍
     public static BookModel queryBookModel(int bookID){
         BookModel bookModel = null;
-        Connection conn = getConn.getConn();
+        Connection conn = new getConn().getConn();
         String sql = "Select * from book where id = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
