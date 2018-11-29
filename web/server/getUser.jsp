@@ -15,6 +15,7 @@
     <title>getUser</title>
     <style>
     table.hovertable {
+        margin-top: 50px;
     font-family: verdana,arial,sans-serif;
     font-size:15px;
     color:#333333;
@@ -53,7 +54,7 @@
             <label>用户名：
                 <input type="search" name="search"/>
             </label>
-            <input type="submit" value="搜索" onclick='showAdmin("秋水")'>
+            <input type="submit" value="搜索" >
         </fieldset>
     </form>
 </div>
@@ -66,20 +67,21 @@
         out.print(search);
         user user=new getUser().getUser(search);
         if (user!=null){
-            out.print(user);
+            //out.print(user);
             %>
-    <table class="hovertable" border="1">
+    <table class="hovertable" border="1" width="70%">
         <caption><h2>用户信息</h2></caption>
         <tr>
-            <th rowspan="2">序号</th>
-            <th rowspan="2">ID</th>
-            <th rowspan="2">用户名</th>
-            <th rowspan="2">密码</th>
-            <th rowspan="2">座机号</th>
-            <th rowspan="2">手机号</th>
-            <th rowspan="2">邮箱</th>
-            <th rowspan="2">地址</th>
+            <th >序号</th>
+            <th >ID</th>
+            <th >用户名</th>
+            <th>密码</th>
+            <th >座机号</th>
+            <th >手机号</th>
+            <th >邮箱</th>
+            <th >地址</th>
         </tr>
+
        <%-- <%
             out.print("<tr>\n" +
                     "<td>"+i+"</td>\n" +
@@ -108,9 +110,6 @@
         }
 
         %>
-    <div class="book">
-
-    </div>
 <%
     }
     else{

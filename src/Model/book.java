@@ -11,18 +11,18 @@ package model;
 
     //description :书本信息的表述
     //category_id ：书本对应的类型id  要联合查询book表与category表
-    //category_description  :这一类书本的描述
+    //category_name  :这一类书本的描述
 public class book {
-    private String id;
+    private int id;
     private String name;
     private String author;
-    private String price;
+    private double price;
     private String image;
     private String description;
-    private String category_id;
-    private String category_description;
+    private int category_id;
+    private String category_name;
 
-    public book(String id, String name, String author, String price, String image, String description, String category_id, String category_description) {
+    public book(int id, String name, String author, double price, String image, String description, int category_id, String category_name) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -30,14 +30,14 @@ public class book {
         this.image = image;
         this.description = description;
         this.category_id = category_id;
-        this.category_description = category_description;
+        this.category_name = category_name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,11 +57,11 @@ public class book {
         this.author = author;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -81,33 +81,33 @@ public class book {
         this.description = description;
     }
 
-    public String getCategory_id() {
+    public int getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(String category_id) {
+    public void setCategory_id(int category_id) {
         this.category_id = category_id;
     }
 
-    public String getCategory_description() {
-        return category_description;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setCategory_description(String category_description) {
-        this.category_description = category_description;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
     @Override
     public String toString() {
         return "book{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", price='" + price + '\'' +
+                ", price=" + price +
                 ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
-                ", category_id='" + category_id + '\'' +
-                ", category_description='" + category_description + '\'' +
+                ", category_id=" + category_id +
+                ", category_description='" + category_name + '\'' +
                 '}';
     }
 }
