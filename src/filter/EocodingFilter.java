@@ -10,12 +10,14 @@ import java.io.IOException;
  * @package: ${PACKAGE_NAME}
  * @project: javaweb
  */
-@WebFilter(filterName = "EocodingFilter")
+@WebFilter(filterName = "EocodingFilter",urlPatterns = "/*")
 public class EocodingFilter implements Filter {
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
         chain.doFilter(req, resp);
     }
 
