@@ -32,13 +32,13 @@ public class adminServlet extends HttpServlet {
         String adminname = request.getParameter("adminname");
         String password = request.getParameter("password");
         admin admin = new getAdmin().getAdmin(adminname);
-        if (admin != null && admin.getPassword().equals(password)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("admin", admin);
-            System.out.println(session.getAttribute("admin").toString());
+        if (admin != null &&admin.getPassword().equals(password)) {
+                HttpSession session = request.getSession();
+                session.setAttribute("admin", admin);
+                System.out.println(session.getAttribute("admin").toString());
         }
         else
-            response.sendRedirect("..service/admin.html");
+            response.sendRedirect("../service/admin.html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
