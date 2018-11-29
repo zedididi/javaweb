@@ -1,5 +1,3 @@
-<%@ page import="com.sun.istack.internal.localization.NullLocalizable" %>
-<%@ page import="model.admin" %>
 <%@ page import="dao.getUser" %>
 <%@ page import="model.user" %><%--
   Created by IntelliJ IDEA.
