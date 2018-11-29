@@ -8,16 +8,22 @@ import java.util.ArrayList;
  * @package: model
  * @project: javaweb
  */
+    //id 用户ID
+    //username 用户名
+    //price 用户的全部订单的总额
 public class userOrders {
+
     private int id;
     private String username;
     private String phone;
+    private double price;
     private ArrayList<order> orderArrayList=new ArrayList<>();
 
-    public userOrders(int id, String username, String phone, ArrayList<order> orderArrayList) {
+    public userOrders(int id, String username, String phone, double price, ArrayList<order> orderArrayList) {
         this.id = id;
         this.username = username;
         this.phone = phone;
+        this.price = price;
         this.orderArrayList = orderArrayList;
     }
 
@@ -53,12 +59,21 @@ public class userOrders {
         this.orderArrayList = orderArrayList;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "userOrders{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", phone='" + phone + '\'' +
+                ", price=" + price +
                 ", orderArrayList=" + orderArrayList +
                 '}';
     }

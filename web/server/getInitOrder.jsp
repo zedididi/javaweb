@@ -1,5 +1,8 @@
 <%@ page import="dao.getUser" %>
-<%@ page import="model.user" %><%--
+<%@ page import="dao.orderUtil" %>
+<%@ page import="model.order" %>
+<%@ page import="model.user" %>
+<%@ page import="model.userOrders" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/28
@@ -45,7 +48,7 @@
 </head>
 <body>
 <div>
-    <form action="getInitorder.jsp.jsp" method="post">
+    <form action="getInitOrder.jsp" method="post">
         <fieldset>
             <legend>初始订单查询</legend>
             <label>用户名：
@@ -62,7 +65,32 @@
         out.print(search);
         user user=new getUser().getUser(search);
         if (user!=null){
+            out.print(user);
+            userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(user.getId()),-1);
+            if (userOrders!=null){
+            %>
+<table class="hovertable" border="1" width="100%">
+    <caption><h2>初始订单</h2></caption>
+    <tr>
+        <th>用户ID</th>
+        <th>用户名</th>
+        <th>订单个数</th>
+        <th>总金额</th>
+    </tr>
+    <tr>
+        <td><%=user.getId()%></td>
+        <td><%=user.getUsername()%></td>
+        <td><%=userOrders.getOrderArrayList().size()%></td>
+        <td><%=userOrders.getPrice()%></td>
+    </tr>
+</table>
+<table class="hovertable" border="1" width="100%">
+    <tr>
 
+    </tr>
+</table>
+<%
+            }
         }
     }
 %>

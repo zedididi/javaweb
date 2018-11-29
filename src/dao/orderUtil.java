@@ -94,7 +94,7 @@ public class orderUtil {
                 }
                 if (result) {
                     order = new order(id, order_date, order_price, order_state, orderItemArrayList);
-                    //System.out.println(order);
+                   // System.out.println(order);
                 }
             }
         }catch (SQLException e) {
@@ -106,22 +106,28 @@ public class orderUtil {
     }
 
 
-    public userOrders getUserOrders(int id){
+    public userOrders getUserOrders(int id,int state){       //state属性含义: -1 代表初始订单， 0 代表 初始和已完成订单， 1 代表已完成订单
         Connection conn=new getConn().getConn();
         userOrders userOrders=null;
         ResultSet set=null;
         boolean result=false;
         ArrayList<order> orderArrayList=new ArrayList<>();
         order order=null;
+        double price=0;
 
         String user_name=null;
         String user_phone=null;
 
-
-        String sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?;";
+        String sql=sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?";
+        if (state==-1||state==1)
+            sql += " and orders.state=? ;";
         try{
             try(PreparedStatement pstat=conn.prepareStatement(sql)){
                 pstat.setInt(1,id);
+                if (state==-1)
+                    pstat.setBoolean(2,false);
+                else if(state==1)
+                pstat.setBoolean(2,true);
                 set=pstat.executeQuery();
 
                 if (set.next()){
@@ -132,18 +138,20 @@ public class orderUtil {
                     user_phone=set.getString(3);
 
                     order=new orderUtil().getOrder(orders_id);
+                    price+=order.getPrice();
                     orderArrayList.add(order);
                 }
 
                 if (result){
-                    userOrders=new userOrders(id,user_name,user_phone,orderArrayList);
-                    System.out.println(userOrders);
+                    userOrders=new userOrders(id,user_name,user_phone,price,orderArrayList);
+                    /*System.out.println(userOrders);*/
                 }
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
 
+        System.out.println(userOrders);
         return userOrders;
     }
 
