@@ -9,6 +9,7 @@ package model;
 
 //用户信息
 public class user {
+
     private String id;
     private String username;
     private String password;

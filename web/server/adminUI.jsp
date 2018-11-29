@@ -62,10 +62,10 @@
                 conn.close();
             %>--%>
             <li class="nav-header">全部用户订单</li>
-            <li><a href="../no.html" >初始订单</a> </li>
-            <li><a href="../no.html">已完成订单</a> </li>
+            <li><a href='javascript:setIframe("getInitOrder.jsp")' >初始订单</a> </li>
+            <li><a href='javascript:setIframe("getFinishOrder.jsp")'>已完成订单</a> </li>
             <li class="nav-header">用户信息查询</li>
-            <li><a href='javascript:setIframe()'>用户信息查询</a> </li>
+            <li><a href='javascript:setIframe("getUser.jsp")'>用户信息查询</a> </li>
         </ul>
     </div><%--左侧菜单div控制--%>
 
@@ -86,9 +86,8 @@
 </div>
 <script src="../js/bgDataQuery.js"></script>
 <script>
-    function setIframe() {
-
-        document.getElementById("iframe1").src="getUser.jsp";
+    function setIframe(url) {
+        document.getElementById("iframe1").src=url;
     }
 </script>
 </body>

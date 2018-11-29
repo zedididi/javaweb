@@ -9,6 +9,11 @@ import java.util.Date;
  * @package: model
  * @project: javaweb
  */
+
+
+//
+    //id order表的id
+    //Date order的下单时间
 public class order {
     private int id;
    /* private Timestamp date;*/

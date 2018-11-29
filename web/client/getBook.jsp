@@ -33,7 +33,7 @@
 %>
 <div class="col-sm-9 col-md-3" >
     <div class="thumbnail" >
-        <img src="../images/book.jpg">
+        <img src=<%=rs.getString("image")%>>
         <div class="caption">
             <h4><%=rs.getString("name")%></h4>
             <p><%=rs.getString("description")%></p>
