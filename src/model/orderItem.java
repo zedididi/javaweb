@@ -6,6 +6,10 @@ package model;
  * @package: model
  * @project: javaweb
  */
+//
+    //id orderItem表的ID
+    //price orderItem表的price
+    //book orderItem对应的书本信息
 public class orderItem {
 
     private int id;

@@ -33,13 +33,14 @@
 %>
 <div class="col-sm-9 col-md-3" >
     <div class="thumbnail" >
-        <img src="../images/book.jpg">
+        <img src="images/book.jpg">
         <div class="caption">
             <h4><%=rs.getString("name")%></h4>
             <p><%=rs.getString("description")%></p>
-            <div class="operation">
-                <a href='#' class="btn btn-primary" role="button">加入购物车</a>
-                <a href="#" class="btn btn-default" role="button">查看详情</a>
+            <p>
+                <button class="btn btn-primary" onclick="addBook(<%=rs.getString("id")%>)">购物车</button>
+                <a href="" class="btn btn-default" role="button">查看详情</a>
+            </p>
             </div>
         </div>
     </div>
@@ -49,6 +50,7 @@
      pstat.close();
     conn.close();
 %>
+</body>
 <%--<script>
     function shop(bookName) {
         xmlHttp.onreadystatechange=function () {
@@ -61,5 +63,4 @@
         xmlHttp.send();
     }
 </script>--%>
-</body>
 </html>

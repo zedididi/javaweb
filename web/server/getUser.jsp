@@ -1,5 +1,3 @@
-<%@ page import="com.sun.istack.internal.localization.NullLocalizable" %>
-<%@ page import="model.admin" %>
 <%@ page import="dao.getUser" %>
 <%@ page import="model.user" %><%--
   Created by IntelliJ IDEA.
@@ -69,7 +67,7 @@
         if (user!=null){
             //out.print(user);
             %>
-    <table class="hovertable" border="1" width="70%">
+    <table class="hovertable" border="1" width="100%">
         <caption><h2>用户信息</h2></caption>
         <tr>
             <th >序号</th>
