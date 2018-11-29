@@ -29,11 +29,11 @@
                     <span class="red">.</span></h1>
             </div>
             <div class="links span8">
-                <a class="login" href="client/login.html" rel="tooltip" data-placement="bottom" data-
-                   placement="bottom" data-toggle="modal" data-target="#myModal"
-                ><img src="images/login.png"></a>
-                <a class="register" href="client/register.html" rel="tooltip" data-placement="bottom"
-                   data-toggle="modal" data-target="#myModal"><img src="images/register.png"></a>
+                <a class="car" href="client/ShowShoppingCar_.jsp"></a>
+                <a class="login" rel="tooltip" data-placement="bottom" data-
+                   placement="bottom" data-toggle="modal" data-target="#myModal"></a>
+                <a class="register"  rel="tooltip" data-placement="bottom"
+                   data-toggle="modal" data-target="#myModal"></a>
             </div>
         </div>
     </div>
@@ -72,7 +72,8 @@
         </div>
     </div>
 </div>
-<script language="JavaScript">
+</body>
+<script>
     function showBook(categoryID) {
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4) {
@@ -85,7 +86,16 @@
         xmlHttp.open("GET", "client/getBook.jsp?id="+categoryID, true);
         xmlHttp.send();
     }
+
+    function addBook(bookID) {
+        xmlHttp.open("POST","/AddBookServlet?BookID=" + bookID,true);
+        xmlHttp.onreadystatechange=function () {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                alert("加入购物车成功")
+            }
+        }
+        xmlHttp.send();
+    }
 </script>
-</body>
 </html>
 
