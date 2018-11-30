@@ -37,10 +37,12 @@
         <div class="caption">
             <h4><%=rs.getString("name")%></h4>
             <p><%=rs.getString("description")%></p>
+            <div class="operation">
             <p>
                 <button class="btn btn-primary" onclick="addBook(<%=rs.getString("id")%>)">购物车</button>
                 <a href="" class="btn btn-default" role="button">查看详情</a>
             </p>
+            </div>
             </div>
         </div>
     </div>
