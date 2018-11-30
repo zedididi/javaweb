@@ -48,7 +48,7 @@
             <th>
                 <input type="checkbox" onclick="selectAll(this)"/>全选
             </th>
-            <th align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品信息&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th align="center" width="45%">商品信息</th>
             <th>单价</th>
             <th>数量</th>
             <th>金额</th>
@@ -73,7 +73,7 @@
                 <input type="button" value="+" onclick="plus(<%=bookModel.getId()%>)">
             </td>
             <td id="price"><%=bookModel.getPrice()*quality%></td>
-            <td><a href="/DeleteBookServlet?BookID=<%=bookModel.getId()%>">删除</a> </td>
+            <td align="left"><a href="/DeleteBookServlet?BookID=<%=bookModel.getId()%>">删除</a> </td>
         </tr>
         <%
             }
@@ -83,10 +83,10 @@
             <td>
                 <input type="checkbox" onclick="selectAll(this)"/>全选
             </td>
-            <td ><input type="button" value="删除" onclick="delete_()"></td>
+            <td align="left"><input type="button" value="删除" onclick="delete_()"></td>
             <td id="selectedNum">已选商品 件</td>
             <td id="total">合计</td>
-            <td><a href="">结算</a> </td>
+            <td><a href="getOrder.jsp">结算</a> </td>
         </tr>
     </table>
 </form>
