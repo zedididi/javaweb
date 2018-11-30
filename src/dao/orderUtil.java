@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class orderUtil {
 
-    public orderItem getOrderItem( int id){
+    public orderItem getOrderItem( int id){   //id orderitem表的id
 
         Connection conn=new getConn().getConn();
         orderItem orderItem=null;
@@ -63,7 +63,7 @@ public class orderUtil {
         return orderItem;
     }
 
-    public order getOrder(int id){
+    public order getOrder(int id){  //id orders表的id
         Connection conn=new getConn().getConn();
         order order=null;
         ResultSet set=null;
@@ -108,7 +108,9 @@ public class orderUtil {
     }
 
 
-    public userOrders getUserOrders(int id,int state){       //state属性含义: -1 代表初始订单， 0 代表 初始和已完成订单， 1 代表已完成订单
+    public userOrders getUserOrders(int id,int state){
+        //id  user表的id
+        // state属性含义: -1 代表初始订单， 0 代表 初始和已完成订单， 1 代表已完成订单
         Connection conn=new getConn().getConn();
         userOrders userOrders=null;
         ResultSet set=null;
@@ -157,6 +159,32 @@ public class orderUtil {
         return userOrders;
     }
 
+    public boolean updateOrderState(int id,boolean state){ //id   order表的id
+        boolean result=false;
+        Connection conn=new getConn().getConn();
+
+        int i=0;
+        String sql="update orders set state=? where id=?";
+
+        try{
+            try(PreparedStatement pstat=conn.prepareStatement(sql)){
+
+                pstat.setBoolean(1,state);
+                pstat.setInt(2,id);
+                i=pstat.executeUpdate();
+
+                if (i>0)
+                    result =true;
+            }
+
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return result;
+    }
 
 
 

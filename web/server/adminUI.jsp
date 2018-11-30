@@ -29,11 +29,11 @@
                     <span class="red">.</span></h1>
             </div>
             <div class="links span8">
-                <a class="login" href='showAdmin.jsp' rel="tooltip" data-placement="bottom" data-
+                <a  href='showAdmin.jsp' rel="tooltip"  data-
                    placement="bottom" data-toggle="modal" data-target="#myModal"
                 ><%=admin.getAdminname()%></a>
-                <a class="register" href="admin.html" rel="tooltip" data-placement="bottom"
-                   data-toggle="modal" >注销</a>
+                <a  href="admin.html" rel="tooltip" data-placement="bottom"
+                   data-toggle="modal" data-target="#myModal">注销</a>
             </div>
         </div>
     </div>
@@ -71,6 +71,7 @@
     function setIframe(url) {
         document.getElementById("iframe1").src=url;
     }
+
 </script>
 </body>
 </html>
