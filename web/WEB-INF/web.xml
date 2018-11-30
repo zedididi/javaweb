@@ -68,4 +68,12 @@
         <servlet-name>MinusServlet</servlet-name>
         <url-pattern>/MinusServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>changeStateServlet</servlet-name>
+        <servlet-class>controller.changeStateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeStateServlet</servlet-name>
+        <url-pattern>/changeStateServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

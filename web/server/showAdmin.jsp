@@ -26,7 +26,6 @@
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
     admin admin= (model.admin) session.getAttribute("admin");
-    //out.print("admin "+admin.toString());
 %>
 <div class="modal-body" style="text-align-all: center">
     <h2>管理员信息：</h2>
