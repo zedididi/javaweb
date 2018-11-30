@@ -49,9 +49,24 @@
     border-style: solid;
     border-color: #a9c6c9;
     }
+
+        button {
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50; /* Green */
+        }
+
+        button:hover {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
     </style>
 </head>
-<body>
+<body onload="initAJAX()">
+<script src="../js/commons.js"></script>
 <div>
     <form action="getInitOrder.jsp" method="post">
         <fieldset>
@@ -67,10 +82,8 @@
     request.setCharacterEncoding("utf-8");
     String search=request.getParameter("search");
     if (search!=null){
-
         user user=new getUser().getUser(search);
         if (user!=null){
-            //out.print(user);
             userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(user.getId()),-1);
             if (userOrders!=null){
                 ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
@@ -107,10 +120,8 @@
         <td><%=order.getId()%></td>
         <td><%=sdf.format(order.getDate())%></td>
         <td><%=order.getPrice()%></td>
-        <td id="th1"><select>
-            <option>初始</option>
-            <option><a onclick="setState()">已完成</a></option>
-        </select></td>
+        <td id="th1">
+        初始&nbsp;<button onclick="sendRequest(<%=order.getId()%>)">修改状态</button></td>
     </tr>
 </table>
 <table class="hovertable" width="100%" border="1">
@@ -141,6 +152,7 @@
                     }
                     %>
 </table>
+<p id="p1"></p>
     <%
                  }
             }
@@ -148,15 +160,34 @@
     }
 %>
 
-<script language="JavaScript">
-    function setState() {
 
-        var th1=document.getElementById("th1");
-        while (th1.hasChildNodes()){
-            th1.removeChild(th1.firstChild);
-        }
-        th1.innerHTML="已完成";
-    }
-</script>
 </body>
+<script language="JavaScript">
+
+    function sendRequest(id) {
+
+        xmlHttp.open("POST", "/changeStateServlet?id="+id,true);
+        xmlHttp.send();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4) {
+                if(xmlHttp.status == 200) {
+                    var th1 = document.getElementById("th1");
+                    while (th1.hasChildNodes()) {
+                        th1.removeChild(th1.firstChild);
+                    }
+                    th1.innerHTML = "已完成";
+                    var data=xmlHttp.responseText;
+                    window.alert(data);
+
+                }else {
+                    window.alert("修改失败");
+                }
+            }
+        };
+
+    }
+
+
+</script>
+<script src="../js/bgDataQuery.js"></script>
 </html>

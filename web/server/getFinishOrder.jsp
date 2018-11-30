@@ -66,9 +66,7 @@
     if (search!=null){
         user user=new getUser().getUser(search);
         if (user!=null){
-            //out.println(user);
             userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(user.getId()),1);
-            //out.println(userOrders);
             if (userOrders!=null){
                 ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
