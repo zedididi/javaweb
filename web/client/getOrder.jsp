@@ -67,10 +67,7 @@
         <td><%=orderItem.getQuantity()%></td>
         <td><%=orderItem.getBook().getPrice()%></td>
         <td><%=orderItem.getPrice()%></td>
-        <td id="th1"><select>
-            <option>初始</option>
-            <option><a onclick="setState()">已完成</a></option>
-        </select></td>
+        <td id="th1"><%=order.isState()%></td>
     </tr>
     <%
         }
@@ -79,20 +76,18 @@
 <%
     }
 %>
-<div name="bottom"></div>
+
+<div name="bottom" style="position:fixed ; bottom:0px;width: 1500px;">
+    <div align="right">
+    <a href="../no.html" class="pay"><img src="../images/pay.jpg" width="50" height="50"></a>
+    </div>
+</div>
+
+
 <script language="JavaScript">
-    function setState() {
-
-        var th1=document.getElementById("th1");
-        while (th1.hasChildNodes()){
-            th1.removeChild(th1.firstChild);
-        }
-        th1.innerHTML="已完成";
-    }
-
     document.getElementById("check").onclick = function(){
         var checked = document.getElementById("check").checked;
-        var checkson = document.getElementsByName("user");
+        var checkson = document.getElementsByName("item");
         if(checked){
             for(var i = 0; i < checkson.length ;i++){
                 checkson[i].checked = true;

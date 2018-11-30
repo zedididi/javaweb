@@ -63,7 +63,7 @@
         %>
         <tr id="<%=bookModel.getId()%>">
             <td><input type="checkbox" name="choose" value="<%=bookModel.getId()%>" onclick="balance()"/></td>
-            <td style="text-align: left"><img src=<%=bookModel.getImage()%> width="100" height="70">
+            <td style="text-align: left"><img src=<%=bookModel.getImage()%> width="100" height="100"></br>
                 书名:<%=bookModel.getName()%> 作者:<%=bookModel.getAuthor()%>
             </td>
             <td><%=bookModel.getPrice()%></td>
