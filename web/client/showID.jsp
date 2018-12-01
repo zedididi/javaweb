@@ -19,6 +19,5 @@
     out.println("id:"+id+"<br>");
     out.print("pwd:"+pwd);
 %>
-
 </body>
 </html>
