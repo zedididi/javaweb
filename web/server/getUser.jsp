@@ -1,5 +1,4 @@
-<%@ page import="com.sun.istack.internal.localization.NullLocalizable" %>
-<%@ page import="model.admin" %>
+
 <%@ page import="dao.getUser" %>
 <%@ page import="model.user" %><%--
   Created by IntelliJ IDEA.
@@ -69,7 +68,7 @@
         if (user!=null){
             //out.print(user);
             %>
-    <table class="hovertable" border="1" width="70%">
+    <table class="hovertable" border="1" width="100%">
         <caption><h2>用户信息</h2></caption>
         <tr>
             <th >序号</th>
@@ -81,20 +80,6 @@
             <th >邮箱</th>
             <th >地址</th>
         </tr>
-
-       <%-- <%
-            out.print("<tr>\n" +
-                    "<td>"+i+"</td>\n" +
-                    "<td>"+user.getId()+"</td>\n" +
-                    "<td>"+user.getUsername()+"</td>\n" +
-                    "<td>"+user.getPassword()+"</td>]\n" +
-                    "<td>"+user.getCellphone()+"</td>\n" +
-                    "<td>"+user.getPhone()+"</td>\n" +
-                    "<td>"+user.getEmail()+"</td>\n" +
-                    "<td"+user.getAddress()+"</td>\n" +
-                    "</tr>\n");
-        %>--%>
-        <br>
         <tr>
             <td><%=i%></td>
             <td><%=user.getId()%></td>
@@ -114,7 +99,7 @@
     }
     else{
         %>
-    <li>不存在</li>
+    <li>此用户不存在</li>
 
 <%
     }

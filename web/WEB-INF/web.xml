@@ -26,4 +26,62 @@
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/controller/loginServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AddBookServlet</servlet-name>
+        <servlet-class>controller.AddBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBookServlet</servlet-name>
+        <url-pattern>/AddBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteBook</servlet-name>
+        <servlet-class>controller.DeleteBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBook</servlet-name>
+        <url-pattern>/DeleteBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteSelectedServlet</servlet-name>
+        <servlet-class>controller.DeleteSelectedServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteSelectedServlet</servlet-name>
+        <url-pattern>/DeleteSelectedServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BalanceServlet</servlet-name>
+        <servlet-class>controller.BalanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BalanceServlet</servlet-name>
+        <url-pattern>/BalanceServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddServlet</servlet-name>
+        <servlet-class>controller.AddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddServlet</servlet-name>
+        <url-pattern>/AddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MinusServlet</servlet-name>
+        <servlet-class>controller.MinusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MinusServlet</servlet-name>
+        <url-pattern>/MinusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>changeStateServlet</servlet-name>
+        <servlet-class>controller.changeStateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeStateServlet</servlet-name>
+        <url-pattern>/changeStateServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

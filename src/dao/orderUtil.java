@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class orderUtil {
 
-    public orderItem getOrderItem( int id){
+    public orderItem getOrderItem( int id){   //id orderitem表的id
 
         Connection conn=new getConn().getConn();
         orderItem orderItem=null;
@@ -63,7 +63,7 @@ public class orderUtil {
         return orderItem;
     }
 
-    public order getOrder(int id){
+    public order getOrder(int id){  //id orders表的id
         Connection conn=new getConn().getConn();
         order order=null;
         ResultSet set=null;
@@ -71,9 +71,11 @@ public class orderUtil {
         ArrayList<orderItem> orderItemArrayList=new ArrayList<>();
         boolean result=false;
 
+        int tset=0;
         java.util.Date order_date=null;
         double order_price=0;
         boolean order_state = false;
+        orderUtil orderUtil=new orderUtil();
 
 
         String sql="select orderitem.id,orders.ordertime,orders.price,orders.state from orderitem,orders where orderitem.order_id=orders.id and orders.id=?";
@@ -82,19 +84,19 @@ public class orderUtil {
                 pstat.setInt(1,id);
                 set=pstat.executeQuery();
 
-                if (set.next()){
+                while (set.next()){
                     result=true;
                     int orderitem_id=set.getInt(1);
                     order_date= new Date((Long) set.getObject(2)) ;
                     order_price=set.getDouble(3);
                     order_state=set.getBoolean(4);
 
-                    orderItem=new orderUtil().getOrderItem(orderitem_id);
+                    orderItem=orderUtil.getOrderItem(orderitem_id);
                     orderItemArrayList.add(orderItem);
                 }
                 if (result) {
                     order = new order(id, order_date, order_price, order_state, orderItemArrayList);
-                    //System.out.println(order);
+                   // System.out.println(order);
                 }
             }
         }catch (SQLException e) {
@@ -106,25 +108,33 @@ public class orderUtil {
     }
 
 
-    public userOrders getUserOrders(int id){
+    public userOrders getUserOrders(int id,int state){
+        //id  user表的id
+        // state属性含义: -1 代表初始订单， 0 代表 初始和已完成订单， 1 代表已完成订单
         Connection conn=new getConn().getConn();
         userOrders userOrders=null;
         ResultSet set=null;
         boolean result=false;
         ArrayList<order> orderArrayList=new ArrayList<>();
         order order=null;
+        double price=0;
 
         String user_name=null;
         String user_phone=null;
 
-
-        String sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?;";
+        String sql=sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?";
+        if (state==-1||state==1)
+            sql += " and orders.state=? ;";
         try{
             try(PreparedStatement pstat=conn.prepareStatement(sql)){
                 pstat.setInt(1,id);
+                if (state==-1)
+                    pstat.setBoolean(2,false);
+                else if(state==1)
+                pstat.setBoolean(2,true);
                 set=pstat.executeQuery();
 
-                if (set.next()){
+                while (set.next()){
 
                     result=true;
                     int orders_id=set.getInt(1);
@@ -132,21 +142,49 @@ public class orderUtil {
                     user_phone=set.getString(3);
 
                     order=new orderUtil().getOrder(orders_id);
+                    price+=order.getPrice();
                     orderArrayList.add(order);
                 }
 
                 if (result){
-                    userOrders=new userOrders(id,user_name,user_phone,orderArrayList);
-                    System.out.println(userOrders);
+                    userOrders=new userOrders(id,user_name,user_phone,price,orderArrayList);
+                    /*System.out.println(userOrders);*/
                 }
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
 
+        System.out.println(userOrders);
         return userOrders;
     }
 
+    public boolean updateOrderState(int id,boolean state){ //id   order表的id
+        boolean result=false;
+        Connection conn=new getConn().getConn();
+
+        int i=0;
+        String sql="update orders set state=? where id=?";
+
+        try{
+            try(PreparedStatement pstat=conn.prepareStatement(sql)){
+
+                pstat.setBoolean(1,state);
+                pstat.setInt(2,id);
+                i=pstat.executeUpdate();
+
+                if (i>0)
+                    result =true;
+            }
+
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return result;
+    }
 
 
 
