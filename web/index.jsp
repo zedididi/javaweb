@@ -81,7 +81,7 @@
                     document.getElementById("book").innerHTML = data;
                 }
             }
-        }
+        };
         xmlHttp.open("GET", "client/getBook.jsp?id="+categoryID, true);
         xmlHttp.send();
     }
@@ -92,7 +92,7 @@
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
                 alert("加入购物车成功")
             }
-        }
+        };
         xmlHttp.send();
     }
 </script>

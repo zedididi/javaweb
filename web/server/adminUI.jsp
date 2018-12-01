@@ -48,6 +48,10 @@
             <li><a href='javascript:setIframe("getFinishOrder.jsp")'>已完成订单</a> </li>
             <li class="nav-header">用户信息查询</li>
             <li><a href='javascript:setIframe("getUser.jsp")'>用户信息查询</a> </li>
+            <li class="nav-header">书籍信息</li>
+            <li><a href='javascript:setIframe("getBook.jsp")'>书籍信息查询</a></li>
+            <li><a href='javascript:setIframe("updateBook.jsp")'>书籍信息修改</a> </li>
+            <li><a href='javascript:setIframe("addBook.jsp")'>书籍信息输入</a> </li>
         </ul>
     </div><%--左侧菜单div控制--%>
 

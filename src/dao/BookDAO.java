@@ -23,6 +23,8 @@ public class BookDAO {
                         set.getDouble("price"),set.getString("image"),set.getString("description"),set.getString("category_id")));
             }
 
+            ps.close();
+            conn.close();
         }catch (SQLException ex){
             ex.printStackTrace();
         }
@@ -40,6 +42,9 @@ public class BookDAO {
             ResultSet set = ps.executeQuery();
             bookModel = new BookModel(set.getInt(1),set.getString(2),set.getString(3),
                     set.getDouble(4),set.getString(5),set.getString(6),set.getString(7));
+
+            ps.close();
+            conn.close();
         }catch (SQLException ex){
             ex.printStackTrace();
         }

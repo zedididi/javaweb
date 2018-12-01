@@ -77,4 +77,17 @@ public class BookModel {
     public void setCategory_id(String category_id) {
         this.category_id = category_id;
     }
+
+    @Override
+    public String toString() {
+        return "BookModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", category_id='" + category_id + '\'' +
+                '}';
+    }
 }

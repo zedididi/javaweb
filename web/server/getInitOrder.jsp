@@ -35,15 +35,13 @@
     padding: 8px;
     border-style: solid;
     border-color: #a9c6c9;
-      /*  width: 10%;
-        word-wrap: break-word;*/
+
     }
     table.hovertable tr {
     background-color:#d4e3e5;
     }
     table.hovertable td {
-       /* heig: 10%;
-        word-wrap: break-word;*/
+
     border-width: 1px;
     padding: 8px;
     border-style: solid;
@@ -88,6 +86,7 @@
             if (userOrders!=null){
                 ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                int num=0;
 %>
 <table class="hovertable" border="1" width="100%">
     <caption><h2>初始订单</h2></caption>
@@ -108,6 +107,7 @@
 <%
                 for (order order:orderArrayList
                      ) {
+                    num++;
  %>
 <table class="hovertable" border="1" width="100%">
     <tr>
@@ -120,8 +120,8 @@
         <td><%=order.getId()%></td>
         <td><%=sdf.format(order.getDate())%></td>
         <td><%=order.getPrice()%></td>
-        <td id="th1">
-        初始&nbsp;<button onclick="sendRequest(<%=order.getId()%>)">修改状态</button></td>
+        <td id="th<%=num%>">
+        初始&nbsp;<button onclick="sendRequest(<%=order.getId()%>,<%=num%>)">修改状态</button></td>
     </tr>
 </table>
 <table class="hovertable" width="100%" border="1">
@@ -160,18 +160,17 @@
     }
 %>
 
-
 </body>
 <script language="JavaScript">
 
-    function sendRequest(id) {
+    function sendRequest(id,th) {
 
         xmlHttp.open("POST", "/changeStateServlet?id="+id,true);
         xmlHttp.send();
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4) {
                 if(xmlHttp.status == 200) {
-                    var th1 = document.getElementById("th1");
+                    var th1 = document.getElementById("th"+th);
                     while (th1.hasChildNodes()) {
                         th1.removeChild(th1.firstChild);
                     }

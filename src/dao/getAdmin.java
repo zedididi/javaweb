@@ -32,7 +32,7 @@ public class getAdmin {
                     String idS = String.valueOf(set.getInt(1));
                     String adminnameS = set.getString(2);
                     String passwordS = set.getString(3);
-                   admin = new admin(idS, adminnameS, passwordS);
+                    admin = new admin(idS, adminnameS, passwordS);
 
                 }
             }
@@ -41,9 +41,6 @@ public class getAdmin {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
         return admin;
     }
 }
