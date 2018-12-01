@@ -30,6 +30,9 @@ public class order {
         this.orderItemArrayList = orderItemArrayList;
     }
 
+    public order(int id, Date order_date, double order_price, boolean order_state, ArrayList<model.orderItem> orderItemArrayList) {
+    }
+
     public int getId() {
         return id;
     }

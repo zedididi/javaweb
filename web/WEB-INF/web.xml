@@ -19,6 +19,14 @@
         <url-pattern>/controller/resumeServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>controller.loginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/controller/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>AddBookServlet</servlet-name>
         <servlet-class>controller.AddBookServlet</servlet-class>
     </servlet>
