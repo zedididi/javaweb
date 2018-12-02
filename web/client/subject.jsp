@@ -21,7 +21,8 @@
             text-align: center;
         }
         .item_head{
-            text-align: center;
+            margin-left: 18.25%;
+            /*text-align: center;*/
         }
         .item_body{
             position: relative;
