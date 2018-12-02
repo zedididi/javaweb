@@ -14,7 +14,8 @@ a:hover { text-decoration: none; }
 .header {
     margin-le: 10,10,10,10; /*外边距*/
     padding-bottom: 5px;
-    background: #f8f8f8 url(../images/pattern.jpg) left top repeat;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
     border-top: 3px solid #eb4141;
     -moz-box-shadow: 0 0px 5px 0 rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0px 5px 0 rgba(0,0,0,.3);

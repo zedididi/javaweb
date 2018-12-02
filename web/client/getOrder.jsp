@@ -32,7 +32,7 @@
 <body>
 <%
     request.setCharacterEncoding("utf-8");
-    String user_id= request.getParameter("userID");
+
     userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(user_id),-1);
     ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

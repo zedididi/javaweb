@@ -81,7 +81,7 @@
             <!-- 轮播（Carousel）项目 -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <a href="client/subject.jsp?author=沈复"><img src="images/0.jpg" alt="First slide"></a>
+                    <a href="client/subject.jsp?author=金庸"><img src="images/0.jpg" alt="First slide"></a>
                     <div class="carousel-caption"></div>
                 </div>
                 <div class="item">
