@@ -32,15 +32,11 @@
             padding: 8px;
             border-style: solid;
             border-color: #a9c6c9;
-            /*  width: 10%;
-              word-wrap: break-word;*/
         }
         table.hovertable tr {
             background-color:#d4e3e5;
         }
         table.hovertable td {
-            /* heig: 10%;
-             word-wrap: break-word;*/
             border-width: 1px;
             padding: 8px;
             border-style: solid;

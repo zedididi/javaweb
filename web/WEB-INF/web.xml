@@ -19,6 +19,14 @@
         <url-pattern>/controller/resumeServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>controller.loginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/controller/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>AddBookServlet</servlet-name>
         <servlet-class>controller.AddBookServlet</servlet-class>
     </servlet>
@@ -75,5 +83,21 @@
     <servlet-mapping>
         <servlet-name>changeStateServlet</servlet-name>
         <url-pattern>/changeStateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>updateBookServlet</servlet-name>
+        <servlet-class>controller.updateBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateBookServlet</servlet-name>
+        <url-pattern>/updateBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>testServlet</servlet-name>
+        <servlet-class>controller.testServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>testServlet</servlet-name>
+        <url-pattern>/testServlet</url-pattern>
     </servlet-mapping>
 </web-app>
