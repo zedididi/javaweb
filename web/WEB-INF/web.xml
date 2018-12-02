@@ -85,19 +85,11 @@
         <url-pattern>/changeStateServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>updateBookServlet</servlet-name>
-        <servlet-class>controller.updateBookServlet</servlet-class>
+        <servlet-name>updateAndChangeBookServlet</servlet-name>
+        <servlet-class>controller.updateAndChangeBookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>updateBookServlet</servlet-name>
-        <url-pattern>/updateBookServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>testServlet</servlet-name>
-        <servlet-class>controller.testServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>testServlet</servlet-name>
-        <url-pattern>/testServlet</url-pattern>
+        <servlet-name>updateAndChangeBookServlet</servlet-name>
+        <url-pattern>/updateAndChangeBookServlet</url-pattern>
     </servlet-mapping>
 </web-app>

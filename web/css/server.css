@@ -1,0 +1,42 @@
+div.modal-body{
+    width: 70%;
+    /* align-items: center;*/
+}
+div{
+    margin-left: 50px;
+}
+#table1{
+    margin-left: 10px;
+}
+table.hovertable {
+    margin-top: 2px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-family: verdana,arial,sans-serif;
+    font-size:15px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+}
+table.hovertable th {
+
+    background-color:#c3dde0;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+table.hovertable tr {
+    background-color:#d4e3e5;
+}
+table.hovertable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+#message{
+    color: red;
+    font-weight: bolder;
+}

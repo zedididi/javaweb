@@ -1,4 +1,7 @@
-<%--
+<%@ page import="dao.bookUtil" %>
+<%@ page import="model.BookModel" %>
+<%@ page import="model.category" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/30
@@ -8,10 +11,135 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>addBook</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/server.css" rel="stylesheet">
+
 </head>
-<body>
+<body onload="initAJAX()">
 
+<div>
+    <%
+        request.setCharacterEncoding("utf-8");
+        String message= (String) request.getAttribute("message");
+        String id= (String) request.getAttribute("id");
+        request.setAttribute("message",null);
+        request.setAttribute("id",null);
+        System.out.println("message"+message);
+        System.out.println("id"+id);
+        String bookId=null;
+        if (message!=null&&id!=null){
+            bookId=id;
+            out.print("<h3 id=\"message\">"+message+"</h3>");
+        }else {
+            bookId=request.getParameter("bookId");
+        }
+        bookUtil bookUtil=new bookUtil();
+    %>
+    <h4>提示：</h4>
+    <h5><span style="font-size: 23px">1.</span>输入序号或者书名点击搜索来查询所需修改的书籍</h5>
+    <h5><span style="font-size: 23px">2.</span>在出现的表格上修改书籍信息，点击修改，修改书籍信息</h5>
+</div>
+<div class="modal-body">
+<form class="form-group"  method="post" action="/updateAndChangeBookServlet" enctype="multipart/form-data">
+    <fieldset>
+        <legend>书籍信息修改</legend>
+        <div class="form-group">
+            <label>书名：</label>
+            <input name="bookName" class="form-control" type="text" placeholder="请输入书名" required>
+        </div>
+        <div class="form-group">
+            <label>作者：</label>
+            <input name="bookAuthor" class="form-control" type="text" placeholder="请输入作者" required>
+        </div>
+        <div class="form-group">
+            <label>单价：</label>
+            <input name="bookPrice" class="form-control" type="text" placeholder="请输入价格" required>
+        </div>
+        <div class="form-group">
+            <label>类型：</label>
+            <input name="category_id" class="form-control" type="text" placeholder="请选择类型" list="list1" required>
+            <datalist id="list1">
+                <%
+                    ArrayList<category> categoryArrayList=bookUtil.getAllCategory();
+                    //System.out.println(categoryArrayList);
+                    for (category c:categoryArrayList
+                            ) {
+                %>
+                <option value="<%=c.getId()%>"><%=c.getName()%></option>
+                <%
+                    }
+                %>
+            </datalist>
+        </div>
+        <div class="form-group">
+        <label>描述：</label>
+            <textarea name="bookDescription" class="form-control"  placeholder="请输入描述" required></textarea>
+        </div>
 
+        <%--<input type="radio">--%>
+        <div class="form-group">
+            <label>图片：</label>
+            <input type="file" class="form-control"  placeholder="请选择图片" required name="photo">
+        </div>
+    </fieldset>
+    <div>
+        <input type="submit"  value="添 加" >
+    </div>
+</form>
+</div>
+<%
+    if (bookId!=null&&bookId!=""){//当输入不为空时
+%>
+<div id="table1">
+<table class="hovertable" border="1" width="100%">
+    <caption>
+        <h2>
+            书籍信息
+        </h2>
+    </caption>
+    <tr>
+        <th>书籍序列号</th>
+        <th>书籍名</th>
+        <th>作者</th>
+        <th>单价</th>
+        <th>图片</th>
+        <th>概述</th>
+        <th>类型</th>
+    </tr>
+    <%
+            BookModel book=null;
+            //只要id不为空   查询book以id为索引（要看bookUtil().getbook(int id,String name)）
+            book = bookUtil.getBook(Integer.parseInt(bookId), null);
+        if (book!=null){  //输入了，书本存在
+            category category=bookUtil.getCategory(Integer.parseInt(book.getCategory_id()));
+            %>
+    <tr>
+        <td><%=book.getId()%></td>
+        <td><%=book.getName()%></td>
+        <td><%=book.getAuthor()%></td>
+        <td><%=book.getPrice()%></td>
+        <td><img src="<%=book.getImage()%>" alt="<%=book.getName()%>" width="90" height="80"> </td>
+        <td width="50%"><%=book.getDescription()%></td>
+        <td><%=category.getName()%></td>
+    </tr>
+    <%
+    }else {//输入了，但是书本不存在
+    %>
+    <tr>
+        <td colspan="7">此书不存在</td>
+    </tr>
+    <%
+        }
+    }
+    %>
+    </table>
+</div>
+
+<script src="../js/jquery.min.js" ></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/commons.js"></script>
 </body>
 </html>
