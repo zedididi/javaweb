@@ -31,7 +31,7 @@
         <div class="row">
             <div class="login span4 ">
                 <h1><a href="server/admin.html"  rel="tooltip" data-placement="bottom" data-
-                       placement="bottom" data-toggle="modal" data-target="#myModal"> 欢迎来到<strong>SuperGod</strong>的书店</a>
+                       placement="bottom" data-toggle="modal"> 欢迎来到<strong>SuperGod</strong>的书店</a>
                     <span class="red ">.</span></h1>
                 <a class="home" href="index.jsp" rel="tooltip" data-placement="bottom" data-
                    placement="bottom"  data-toggle="modal" data-target="#myModal"></a>
