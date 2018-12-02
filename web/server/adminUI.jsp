@@ -17,10 +17,14 @@
 <script src="../js/jquery.min.js" ></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/commons.js"></script>
+
 <%
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
-
+    //下面三条代码实现页面不缓存，是实现注销功能的   原理：浏览器在前进后退到该页面时，就会重新发送请求
+    response.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate"); //HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+    response.setDateHeader("Expires", -1); //prevents caching at the proxy server
     admin admin= (model.admin) session.getAttribute("admin");
     System.out.println("adminUI"+admin);
     if (admin==null)
@@ -75,11 +79,7 @@
         </div>
     </div>
 </div>
-<%
-    response.setHeader("Cache-Control", "no-store"); //HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
-    response.setDateHeader("Expires", 0); //prevents caching at the proxy server
-%>
+
 <script src="../js/bgDataQuery.js"></script>
 <script>
     function setIframe(url) {

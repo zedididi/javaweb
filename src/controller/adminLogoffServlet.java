@@ -28,7 +28,7 @@ public class adminLogoffServlet extends HttpServlet {
         System.out.println("logoff"+admin);
         session.removeAttribute("admin");
        // response.sendRedirect("/server/admin.html");
-        response.sendRedirect("/server/adminUI.jsp");
+        response.sendRedirect("/server/admin.html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
