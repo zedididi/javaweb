@@ -98,7 +98,6 @@ fabric.properties
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -113,3 +112,4 @@ testMian
 client/showID.jsp
 .idea
 *.iml
+src/dao/getConn.java
