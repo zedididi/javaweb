@@ -62,9 +62,9 @@
             <th width="30px">
             </th>
             <th align="center" width="30%">商品信息</th>
-            <th width="20%">单价</th>
+            <th width="20%">单价(¥)</th>
             <th width="20%">数量</th>
-            <th width="15%">金额</th>
+            <th width="15%">金额(¥)</th>
             <th width="15%">操作</th>
         </tr>
         <%
@@ -79,14 +79,14 @@
             <td><img src=<%=bookModel.getImage()%> width="100" height="100"></br>
                 书名:<%=bookModel.getName()%> 作者:<%=bookModel.getAuthor()%>
             </td>
-            <td><%=bookModel.getPrice()%>¥</td>
+            <td><%=bookModel.getPrice()%></td>
             <td>
                 <input type="button" value="-" onclick="minus(<%=bookModel.getId()%>)">
                 <span id="amount"><%=quality%></span>
                 <input type="button" value="+" onclick="plus(<%=bookModel.getId()%>)">
             </td>
-            <td id="price"><%=bookModel.getPrice()*quality%>¥</td>
-            <td align="left"><a href="/DeleteBookServlet?BookID=<%=bookModel.getId()%>">删除</a> </td>
+            <td id="price"><%=bookModel.getPrice()*quality%></td>
+            <td align="left"><a href="/DeleteBookServlet?BookID=<%=bookModel.getId()%>">删除</a></td>
         </tr>
         <%
             }
@@ -98,7 +98,7 @@
             <th align="left"><input type="button" value="删除" onclick="delete_()"></th>
             <th id="selectedNum">已选商品 件</th>
             <th id="total">合计</th>
-            <th><a href="getOrder.jsp?userID=1">结算</a> </th>
+            <th><a href="getOrder.jsp?userID=1">结算</a></th>
             <th></th>
         </tr>
     </table>

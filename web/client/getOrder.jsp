@@ -50,8 +50,8 @@
         <th width="30%">商品信息</th>
         <th width="20%">下单时间</th>
         <th width="15%">数量</th>
-        <th width="10%">单价</th>
-        <th width="15%">总价</th>
+        <th width="10%">单价(¥)</th>
+        <th width="15%">总价(¥)</th>
         <th width="10%">交易状态</th>
     </tr>
     <%
