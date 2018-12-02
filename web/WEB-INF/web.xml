@@ -92,4 +92,12 @@
         <servlet-name>updateAndChangeBookServlet</servlet-name>
         <url-pattern>/updateAndChangeBookServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>adminLogoffServlet</servlet-name>
+        <servlet-class>controller.adminLogoffServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminLogoffServlet</servlet-name>
+        <url-pattern>/adminLogoffServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -5,13 +5,19 @@
     <title>backLogin</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        div.modal-body{
+            margin-left: 15%;
+            width: 70%;
+        }
+    </style>
 </head>
 <body>
 <div class="modal-title">
     <h1 class="text-center">登录</h1>
 </div>
 <div class="modal-body">
-    <form class="form-group" action="server/getAdmin.jsp" method="post" accept-charset="UTF-8">
+    <form class="form-group" action="getAdmin.jsp" method="post" accept-charset="UTF-8">
         <div class="form-group">
             <label>用户名</label>
             <input name="adminname" class="form-control" type="text" placeholder="请输入用户名" >

@@ -32,7 +32,7 @@
     <br>
     <ul>
         <li>ID:<%=admin.getId()%></li>
-        <li>名字：<%=admin.getAdminname()%></li>
+        <li>名字：<%=admin.getAdminName()%></li>
         <li>密码：<%=admin.getPassword()%></li>
     </ul>
 </div>

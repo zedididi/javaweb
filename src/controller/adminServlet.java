@@ -1,6 +1,6 @@
 package controller;
 
-import dao.getAdmin;
+import dao.adminUtil;
 import model.admin;
 
 import javax.servlet.ServletException;
@@ -30,7 +30,7 @@ public class adminServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String adminname = request.getParameter("adminname");
         String password = request.getParameter("password");
-        admin admin = new getAdmin().getAdmin(adminname);
+        admin admin = new adminUtil().getAdmin(adminname);
         if (admin != null &&admin.getPassword().equals(password)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("admin", admin);
@@ -41,6 +41,6 @@ public class adminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+           doPost(request,response);
     }
 }
