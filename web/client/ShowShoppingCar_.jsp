@@ -86,7 +86,7 @@
             <td align="left"><input type="button" value="删除" onclick="delete_()"></td>
             <td id="selectedNum">已选商品 件</td>
             <td id="total">合计</td>
-            <td><a href="getOrder.jsp">结算</a> </td>
+            <td><a href="getOrder.jsp?userID=1">结算</a> </td>
         </tr>
     </table>
 </form>

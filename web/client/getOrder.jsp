@@ -32,7 +32,7 @@
 <body>
 <%
     request.setCharacterEncoding("utf-8");
-    String user_id= String.valueOf(1);
+    String user_id= request.getParameter("userID");
     userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(user_id),-1);
     ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -76,7 +76,7 @@
 <%
     }
 %>
-
+<%--设置bottom，实现直达底部功能--%>
 <div name="bottom" style="position:fixed ; bottom:0px;width: 1500px;">
     <div align="right">
     <a href="../no.html" class="pay"><img src="../images/pay.jpg" width="50" height="50"></a>
@@ -85,6 +85,7 @@
 
 
 <script language="JavaScript">
+    //实现全选功能
     document.getElementById("check").onclick = function(){
         var checked = document.getElementById("check").checked;
         var checkson = document.getElementsByName("item");
