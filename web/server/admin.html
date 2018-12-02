@@ -14,22 +14,22 @@
 </head>
 <body>
 <div class="modal-title">
-    <h1 class="text-center">登录</h1>
+    <h1 class="text-center">管理员登录</h1>
 </div>
 <div class="modal-body">
     <form class="form-group" action="getAdmin.jsp" method="post" accept-charset="UTF-8">
         <div class="form-group">
             <label>用户名</label>
-            <input name="adminname" class="form-control" type="text" placeholder="请输入用户名" >
+            <input name="adminname" class="form-control" type="text" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$" >
         </div>
         <div class="form-group">
             <label>密码</label>
-            <input name="password" class="form-control" type="password" placeholder="请输入密码">
+            <input name="password" class="form-control" type="password" placeholder="由数字、26个英文字母或者下划线组成的字符串" pattern="^\w+$">
         </div>
 
         <div class="text-right">
-            <button class="btn btn-primary" type="submit">登录</button>
-            <button class="btn btn-primary" type="reset">取消</button>
+            <button class="btn btn-primary" type="submit">登 录</button>
+            <button class="btn btn-primary" type="reset">取 消</button>
         </div>
     </form>
 </div>

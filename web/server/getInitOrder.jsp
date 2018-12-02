@@ -44,7 +44,7 @@
             <legend>初始订单查询</legend>
             <div class="form-group">
                 <label>用户名：</label>
-                <input name="search" class="form-control" type="search" placeholder="请输入用户名">
+                <input name="search" class="form-control" type="search" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div>
                 <input type="submit" value="查 询" >

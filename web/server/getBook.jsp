@@ -24,11 +24,11 @@
             <legend>书籍信息查询</legend>
             <div class="form-group">
                 <label>序号：</label>
-                <input name="bookId" class="form-control" type="search" placeholder="请输入序号">
+                <input name="bookId" class="form-control" type="search" placeholder="非零的正整数" pattern="^[1-9]\d*$">
             </div>
             <div class="form-group">
                 <label>书名：</label>
-                <input name="bookName" class="form-control" type="search" placeholder="请输入书名">
+                <input name="bookName" class="form-control" type="search" placeholder="中文、英文、数字包括下划线"  pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div>
             <input type="submit" value="查 询" >

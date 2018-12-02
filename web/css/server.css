@@ -40,3 +40,7 @@ table.hovertable td {
     color: red;
     font-weight: bolder;
 }
+
+textarea{
+    column-span: 4;
+}

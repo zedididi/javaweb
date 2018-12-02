@@ -12,6 +12,13 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
     <title>网上书店</title>
+    <style>
+        #iframe1{
+            width: 100%;
+            height: 100%;
+            float: right;
+        }
+    </style>
 </head>
 <body  onload="initAJAX()">
 <script src="../js/jquery.min.js" ></script>
@@ -47,7 +54,7 @@
         </div>
     </div>
 </div> <%--header--%>
-<div class="row"> <%--下方左右div控制--%>
+<div class="row" > <%--下方左右div控制--%>
     <div class="col-md-3"> <%--左侧菜单div控制--%>
         <ul class="nav nav-list">
             <li class="nav-header" style="font-size: large;font-style: oblique;font-weight: bold">后台功能</li>
@@ -64,8 +71,8 @@
         </ul>
     </div><%--左侧菜单div控制--%>
 
-    <div class="col-md-9" id="book"><%--书籍布局控制--%>
-        <iframe id="iframe1" width="100%" height="100%">
+    <div class="col-md-9" id="book" ><%--书籍布局控制--%>
+        <iframe id="iframe1">
 
         </iframe>
     </div>
@@ -86,10 +93,6 @@
         document.getElementById("iframe1").src=url;
     }
 
-    function clear() {
-        //window.history.forward(1);
-        //window.location.replace('admin.html')
-    }
 </script>
 </body>
 </html>

@@ -48,11 +48,11 @@
             <legend>书籍信息查询</legend>
             <div class="form-group">
                 <label>序号：</label>
-                <input name="bookId" class="form-control" type="search" placeholder="请输入序号">
+                <input name="bookId" class="form-control" type="search" placeholder="非零的正整数"   pattern="^[1-9]\d*$">
             </div>
             <div class="form-group">
                 <label>书名：</label>
-                <input name="bookName" class="form-control" type="search" placeholder="请输入书名">
+                <input name="bookName" class="form-control" type="search" placeholder="中文、英文、数字包括下划线"  pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div>
             <input type="submit" value="查 询" >
@@ -107,23 +107,23 @@
             <legend>书籍信息修改</legend>
             <div class="form-group">
                 <label>序号：</label>
-                <input name="bookId" class="form-control" type="text" value="<%=book.getId()%>" placeholder="请输入序号" required>
+                <input name="bookId" class="form-control" type="text" value="<%=book.getId()%>" placeholder="中文、英文、数字包括下划线"  pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$" required disabled="disabled">
             </div>
             <div class="form-group">
                 <label>书名：</label>
-                <input name="bookName" class="form-control" type="text" value="<%=book.getName()%>" placeholder="请输入书名" required>
+                <input name="bookName" class="form-control" type="text" value="<%=book.getName()%>" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div class="form-group">
                 <label>作者：</label>
-                <input name="bookAuthor" class="form-control" type="text" value="<%=book.getAuthor()%>" placeholder="请输入作者"  required>
+                <input name="bookAuthor" class="form-control" type="text" value="<%=book.getAuthor()%>" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div class="form-group">
                 <label>单价：</label>
-                <input name="bookPrice" class="form-control" type="text"  value="<%=book.getPrice()%>" placeholder="请输入价格" required>
+                <input name="bookPrice" class="form-control" type="text"  value="<%=book.getPrice()%>" placeholder="有1~2位小数的正实数" required pattern="^[0-9]+(.[0-9]{1,2})?$">
             </div>
             <div class="form-group">
                 <label>类型：</label>
-                <input name="category_id" class="form-control" type="text" placeholder="请选择类型" list="list1" required>
+                <input name="category_id" class="form-control" type="text" list="list1" placeholder="非零的正整数"  required pattern="^[1-9]\d*$">
                 <datalist id="list1">
                     <%
                         ArrayList<category> categoryArrayList=bookUtil.getAllCategory();

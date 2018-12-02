@@ -48,19 +48,19 @@
         <legend>书籍信息修改</legend>
         <div class="form-group">
             <label>书名：</label>
-            <input name="bookName" class="form-control" type="text" placeholder="请输入书名" required>
+            <input name="bookName" class="form-control" type="text" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
         </div>
         <div class="form-group">
             <label>作者：</label>
-            <input name="bookAuthor" class="form-control" type="text" placeholder="请输入作者" required>
+            <input name="bookAuthor" class="form-control" type="text" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
         </div>
         <div class="form-group">
             <label>单价：</label>
-            <input name="bookPrice" class="form-control" type="text" placeholder="请输入价格" required>
+            <input name="bookPrice" class="form-control" type="text" placeholder="有1~2位小数的正实数" required pattern="^[0-9]+(.[0-9]{1,2})?$">
         </div>
         <div class="form-group">
             <label>类型：</label>
-            <input name="category_id" class="form-control" type="text" placeholder="请选择类型" list="list1" required>
+            <input name="category_id" class="form-control" type="text" list="list1" placeholder="非零的正整数"  required pattern="^[1-9]\d*$">
             <datalist id="list1">
                 <%
                     ArrayList<category> categoryArrayList=bookUtil.getAllCategory();
@@ -76,7 +76,7 @@
         </div>
         <div class="form-group">
         <label>描述：</label>
-            <textarea name="bookDescription" class="form-control"  placeholder="请输入描述" required></textarea>
+            <textarea name="bookDescription" cols="4" class="form-control"  placeholder="请输入描述" required></textarea>
         </div>
 
         <%--<input type="radio">--%>
