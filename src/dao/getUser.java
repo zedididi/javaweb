@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
+/*
  * @auther: Liu Zedi.
  * @date: Create in 2018/11/24  17:16
  * @package: connectDB
@@ -28,7 +28,6 @@ public class getUser {
             try (PreparedStatement pstat = conn.prepareStatement(sql)) {
                 pstat.setString(1, username);
                 set = pstat.executeQuery();
-
                 if (set.next()) {
                     String idS = String.valueOf(set.getInt(1));
                     String usernameS = set.getString(2);
@@ -46,9 +45,6 @@ public class getUser {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
-
         return user;
     }
 }

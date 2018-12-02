@@ -8,11 +8,23 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
+<script type="text/javascript">
+    function refresh() {
+       login.imgValidate.src="validate.jsp?id=" +Math.random();
+    }
+/*
+    function text() {
+      var c=document.getElementById("code");
+      if(c!=m)
+         tip.innerHTML("jb,kdkgh") ;
+
+    }*/
+</script>
 <div class="modal-title">
     <h1 class="text-center">登录</h1>
 </div>
 <div class="modal-body">
-    <form class="form-group" action="showID.jsp" method="post" accept-charset="utf-8">
+    <form name="login" class="form-group" action="../controller/loginServlet" method="post" accept-charset="utf-8">
         <div class="form-group">
             <label>用户名</label>
             <input name="username" class="form-control" type="text" placeholder="请输入用户名" >
@@ -21,7 +33,11 @@
             <label>密码</label>
             <input name="password" class="form-control" type="password" placeholder="请输入密码">
         </div>
-
+        <div class="form-group">
+            <label>验证码</label>
+            <input name="code" id="code" type="text" size="10">
+            <img src="client/validate.jsp" name="imgValidate" onclick="refresh()">
+        </div>
         <div class="text-right">
             <button class="btn btn-primary" type="submit">登录</button>
             <button class="btn btn-primary" type="reset">取消</button>
