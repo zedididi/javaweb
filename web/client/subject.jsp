@@ -21,7 +21,8 @@
             text-align: center;
         }
         .item_head{
-            text-align: center;
+            margin-left: 18.25%;
+            /*text-align: center;*/
         }
         .item_body{
             position: relative;
@@ -61,7 +62,7 @@
 %>
         <div class="item_body_book">
             <div style="text-align: center">
-            <a href=""><img width="149" height="149" src="<%=rs.getString("image")%>"></a>
+            <a href="bookInfo.jsp?bookId=<%=rs.getString("id")%>"><img width="149" height="149" src="<%=rs.getString("image")%>"></a>
             </div>
             <div style="text-align: center">
             <p><%=rs.getString("name")%></p>

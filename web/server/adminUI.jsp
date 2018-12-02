@@ -1,3 +1,4 @@
+<%@ page import="dao.adminUtil" %>
 <%@ page import="model.admin" %><%--
   Created by IntelliJ IDEA.
   User: 16051
@@ -19,7 +20,11 @@
 <%
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
+
     admin admin= (model.admin) session.getAttribute("admin");
+    System.out.println("adminUI"+admin);
+    if (admin==null)
+        response.sendRedirect("admin.html");
 %>
 <div class="header">
     <div class="container">
@@ -31,9 +36,9 @@
             <div class="links span8">
                 <a  href='showAdmin.jsp' rel="tooltip"  data-
                    placement="bottom" data-toggle="modal" data-target="#myModal"
-                ><%=admin.getAdminname()%></a>
-                <a  href="admin.html" rel="tooltip" data-placement="bottom"
-                   data-toggle="modal" data-target="#myModal">注销</a>
+                ><%=admin.getAdminName()%></a>
+                <a  href="/adminLogoffServlet" onclick="clear()" rel="tooltip" data-placement="bottom"
+                   >注销</a>
             </div>
         </div>
     </div>
@@ -70,12 +75,21 @@
         </div>
     </div>
 </div>
+<%
+    response.setHeader("Cache-Control", "no-store"); //HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+    response.setDateHeader("Expires", 0); //prevents caching at the proxy server
+%>
 <script src="../js/bgDataQuery.js"></script>
 <script>
     function setIframe(url) {
         document.getElementById("iframe1").src=url;
     }
 
+    function clear() {
+        //window.history.forward(1);
+        //window.location.replace('admin.html')
+    }
 </script>
 </body>
 </html>

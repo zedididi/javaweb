@@ -11,63 +11,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>getBook</title>
-    <style>
-        table.hovertable {
-            margin-top: 2px;
-            margin-bottom: 0px;
-            text-align: center;
-            font-family: verdana,arial,sans-serif;
-            font-size:15px;
-            color:#333333;
-            border-width: 1px;
-            border-color: #999999;
-            border-collapse: collapse;
-        }
-        table.hovertable th {
-
-            background-color:#c3dde0;
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #a9c6c9;
-
-        }
-        table.hovertable tr {
-            background-color:#d4e3e5;
-        }
-        table.hovertable td {
-
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #a9c6c9;
-        }
-    </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/server.css" rel="stylesheet">
 </head>
 <body>
-<div>
-    <form action="getBook.jsp" method="post" >
+<div class="modal-body">
+    <form class="form-group" action="getBook.jsp" method="post" >
         <fieldset>
             <legend>书籍信息查询</legend>
-            <label>序号：
-                <input type="search" name="bookIdSearch" />
-            </label>
-            <label>书名：
-                <input type="search" name="bookNameSearch" />
-            </label>
-            <input type="submit" value="搜索" >
+            <div class="form-group">
+                <label>序号：</label>
+                <input name="bookId" class="form-control" type="search" placeholder="请输入序号">
+            </div>
+            <div class="form-group">
+                <label>书名：</label>
+                <input name="bookName" class="form-control" type="search" placeholder="请输入书名">
+            </div>
+            <div>
+            <input type="submit" value="查 询" >
+            </div>
         </fieldset>
     </form>
 </div>
 <%
     request.setCharacterEncoding("utf-8");
-    String bookId=request.getParameter("bookIdSearch");
-    String bookName=request.getParameter("bookNameSearch");
+    String bookId=request.getParameter("bookId");
+    String bookName=request.getParameter("bookName");
     bookUtil bookUtil=new bookUtil();
 
     if (bookId!=null||bookName!=null){//当输入不都为空时
 %>
+<div id="table1">
 <table class="hovertable" border="1" width="100%">
     <caption><h2>书籍信息</h2></caption>
     <tr>
@@ -130,6 +107,7 @@
         }
     }
 %>
+</div>
 </table>
 </body>
 </html>

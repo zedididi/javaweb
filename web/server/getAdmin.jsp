@@ -18,7 +18,7 @@
     request.setCharacterEncoding("utf-8");
     String adminname=request.getParameter("adminname");
     String password=request.getParameter("password");
-    admin admin=new getAdmin().getAdmin(adminname);
+    admin admin=new adminUtil().getAdmin(adminname);
     if (admin!=null&&admin.getPassword().equals(password)){
         session.setAttribute("admin",admin);
         System.out.println(session.getAttribute("admin").toString());

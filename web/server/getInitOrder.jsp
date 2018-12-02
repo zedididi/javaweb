@@ -15,39 +15,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>initOrders</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/server.css">
     <style>
-        table.hovertable {
-            margin-top: 2px;
-            margin-bottom: 0px;
-            text-align: center;
-            font-family: verdana,arial,sans-serif;
-            font-size:15px;
-            color:#333333;
-            border-width: 1px;
-            border-color: #999999;
-            border-collapse: collapse;
-        }
-        table.hovertable th {
-
-    background-color:#c3dde0;
-    border-width: 1px;
-    padding: 8px;
-    border-style: solid;
-    border-color: #a9c6c9;
-
-    }
-    table.hovertable tr {
-    background-color:#d4e3e5;
-    }
-    table.hovertable td {
-
-    border-width: 1px;
-    padding: 8px;
-    border-style: solid;
-    border-color: #a9c6c9;
-    }
-
         button {
             -webkit-transition-duration: 0.4s; /* Safari */
             transition-duration: 0.4s;
@@ -65,14 +38,18 @@
 </head>
 <body onload="initAJAX()">
 <script src="../js/commons.js"></script>
-<div>
-    <form action="getInitOrder.jsp" method="post">
+<div class="modal-body">
+    <form class="form-group" action="getInitOrder.jsp" method="post">
         <fieldset>
             <legend>初始订单查询</legend>
-            <label>用户名：
-                <input type="search" name="search"/>
-            </label>
-            <input type="submit" value="搜索" >
+            <div class="form-group">
+                <label>用户名：</label>
+                <input name="search" class="form-control" type="search" placeholder="请输入用户名">
+            </div>
+            <div>
+                <input type="submit" value="查 询" >
+            </div>
+
         </fieldset>
     </form>
 </div>
@@ -88,6 +65,7 @@
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 int num=0;
 %>
+<div id="table1">
 <table class="hovertable" border="1" width="100%">
     <caption><h2>初始订单</h2></caption>
     <tr>
@@ -152,14 +130,14 @@
                     }
                     %>
 </table>
-<p id="p1"></p>
+
     <%
                  }
             }
         }
     }
 %>
-
+</div>
 </body>
 <script language="JavaScript">
 

@@ -11,87 +11,69 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>updateBook</title>
-    <style>
-
-        form2{
-            width: 50%;
-            font-family: Arial;
-            font-size: 15px;
-        }
-        table.hovertable {
-            margin-top: 2px;
-            margin-bottom: 0px;
-            text-align: center;
-            font-family: verdana,arial,sans-serif;
-            font-size:15px;
-            color:#333333;
-            border-width: 1px;
-            border-color: #999999;
-            border-collapse: collapse;
-        }
-        table.hovertable th {
-
-            background-color:#c3dde0;
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #a9c6c9;
-
-        }
-        table.hovertable tr {
-            background-color:#d4e3e5;
-        }
-        table.hovertable td {
-
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #a9c6c9;
-        }
-        div{
-            margin-left: 50px;
-        }
-        form2 input{
-            margin-top: 2px;
-            height: 30px;
-            width: 90%;
-        }
-    </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/server.css" rel="stylesheet">
 </head>
 <body onload="initAJAX()">
 
 <div>
-
-    <h2>提示：</h2>
-    <h3><span style="font-size: 23px">1.</span>输入序号或者书名点击搜索来查询所需修改的书籍</h3>
-    <h3><span style="font-size: 23px">2.</span>在出现的表格上修改书籍信息，点击修改，修改书籍信息</h3>
+    <%
+        request.setCharacterEncoding("utf-8");
+        String message= (String) request.getAttribute("message");
+        String id= (String) request.getAttribute("id");
+        request.setAttribute("message",null);
+        request.setAttribute("id",null);
+        System.out.println("message"+message);
+        System.out.println("id"+id);
+        String bookId=null,bookName=null;
+        if (message!=null&&id!=null){
+            bookId=id;
+            out.print("<h3 id=\"message\">"+message+"</h3>");
+        }else {
+            bookId=request.getParameter("bookId");
+            bookName=request.getParameter("bookName");
+            System.out.println("updateBook :"+bookId+bookName);
+        }
+    %>
+    <h4>提示：</h4>
+    <h5><span style="font-size: 23px">1.</span>输入序号或者书名点击搜索来查询所需修改的书籍</h5>
+    <h5><span style="font-size: 23px">2.</span>在出现的表格上修改书籍信息，点击修改，修改书籍信息</h5>
 </div>
-<div>
-    <form id="form1" action="updateBook.jsp" method="post" >
+<div class="modal-body">
+    <form class="form-group" action="updateBook.jsp" method="post" >
         <fieldset>
             <legend>书籍信息查询</legend>
-            <label>序号：
-                <input type="search" name="bookIdSearch" />
-            </label>
-            <label>书名：
-                <input type="search" name="bookNameSearch" />
-            </label>
-            <input type="submit" value="搜索" >
+            <div class="form-group">
+                <label>序号：</label>
+                <input name="bookId" class="form-control" type="search" placeholder="请输入序号">
+            </div>
+            <div class="form-group">
+                <label>书名：</label>
+                <input name="bookName" class="form-control" type="search" placeholder="请输入书名">
+            </div>
+            <div>
+            <input type="submit" value="查 询" >
+            </div>
         </fieldset>
     </form>
 </div>
 <%
-    request.setCharacterEncoding("utf-8");
-    String bookId=request.getParameter("bookIdSearch");
-    String bookName=request.getParameter("bookNameSearch");
+
     bookUtil bookUtil=new bookUtil();
 
     if (bookId!=null||bookName!=null){//当输入不都为空时
         if (bookId!=""||bookName!=""){         //这是个bug.刚开始加载时，bookId与bookName都为null，当不输入点击搜索，bookId与bookName都为""
 %>
+<div id="table1">
 <table class="hovertable" border="1" width="100%">
-    <caption><h2>书籍信息</h2></caption>
+    <caption>
+        <h2>
+            书籍信息
+        </h2>
+    </caption>
     <tr>
         <th>书籍序列号</th>
         <th>书籍名</th>
@@ -119,27 +101,29 @@
         <td width="50%"><%=book.getDescription()%></td>
         <td><%=category.getName()%></td>
     </tr>
-    <div>
-    <form id="from2" method="post" enctype="multipart/form-data">
+    <div class="modal-body">
+    <form class="form-group" method="post" action="/updateAndChangeBookServlet" enctype="multipart/form-data">
         <fieldset>
             <legend>书籍信息修改</legend>
-            <label>序号：
-                <input type="text" name="bookId" value="<%=book.getId()%>" required/>
-            </label><br>
-            <label>书名：
-                <input type="text" name="bookName" value="<%=book.getName()%>" required/>
-            </label><br>
-            <label>作者：
-                <input type="text" name="bookAuthor" value="<%=book.getAuthor()%>" required/>
-            </label><br>
-            <label>单价：
-                <input type="text" name="bookPrice" value="<%=book.getPrice()%>" required/>
-            </label><br>
-            <label>描述：
-                <textarea name="bookDescription" required><%=book.getDescription()%></textarea>
-            </label><br>
-            <label>类型：
-                <input type="text" name="category_id" list="list1" required/>
+            <div class="form-group">
+                <label>序号：</label>
+                <input name="bookId" class="form-control" type="text" value="<%=book.getId()%>" placeholder="请输入序号" required>
+            </div>
+            <div class="form-group">
+                <label>书名：</label>
+                <input name="bookName" class="form-control" type="text" value="<%=book.getName()%>" placeholder="请输入书名" required>
+            </div>
+            <div class="form-group">
+                <label>作者：</label>
+                <input name="bookAuthor" class="form-control" type="text" value="<%=book.getAuthor()%>" placeholder="请输入作者"  required>
+            </div>
+            <div class="form-group">
+                <label>单价：</label>
+                <input name="bookPrice" class="form-control" type="text"  value="<%=book.getPrice()%>" placeholder="请输入价格" required>
+            </div>
+            <div class="form-group">
+                <label>类型：</label>
+                <input name="category_id" class="form-control" type="text" placeholder="请选择类型" list="list1" required>
                 <datalist id="list1">
                     <%
                         ArrayList<category> categoryArrayList=bookUtil.getAllCategory();
@@ -152,13 +136,21 @@
                         }
                     %>
                 </datalist>
-            </label><br>
+            </div>
+            <div class="form-group">
+                <label>描述：</label>
+                <textarea name="bookDescription" class="form-control"  placeholder="请输入描述" required><%=book.getDescription()%></textarea>
+            </div>
+
             <%--<input type="radio">--%>
-            <input type="file" required name="photo">
+            <div class="form-group">
+                <label>图片：</label>
+                <input type="file" class="form-control"  placeholder="请选择图片" required name="photo">
+            </div>
 
         </fieldset>
         <div>
-            <input type="button" value="确认" onclick="outputForm()" >
+            <input type="submit"  value="修 改" >
         </div>
     </form>
     </div>
@@ -174,52 +166,8 @@
     }
     %>
     </table>
-<script>
-    function showMessage() {
-        xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState == 4) {
-                if(xmlHttp.status == 200) {
-                    var data = xmlHttp.responseText;
-                    document.getElementById("book").innerHTML = data;
-                }
-            }
-        };
-        xmlHttp.open("GET", "client/getBook.jsp?id="+categoryID, true);
-        xmlHttp.send();
-    }
+</div>
 
-    function showMessage2() {
-        
-        var form = new FormData(document.getElementById("form2"));
-        var req = new XMLHttpRequest();
-        req.open("post", "/testServlet", true);
-        req.send(form);
-    }
-    
-    function outputForm() {
-        var form = new FormData(document.getElementById("form2"));
-//             var req = new XMLHttpRequest();
-//             req.open("post", "${pageContext.request.contextPath}/public/testupload", false);
-//             req.send(form);
-        $.ajax({
-            url:"/testServlet",
-            type:"post",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(data){
-                window.clearInterval(timer);
-                console.log("over..");
-            },
-            error:function(e){
-                alert("错误！！");
-                window.clearInterval(timer);
-            }
-        });
-        get();//此处为上传文件的进度条
-    }
-    
-</script>
 <script src="../js/jquery.min.js" ></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/commons.js"></script>

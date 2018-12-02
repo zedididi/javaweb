@@ -9,13 +9,11 @@ import java.sql.SQLException;
 
 /**
  * @auther: Liu Zedi.
- * @date: Create in 2018/11/25  18:28
- * @package: connectDB
+ * @date: Create in 2018/12/2  20:21
+ * @package: dao
  * @project: javaweb
  */
-
-//获取管理员信息，管理员名为查询凭证
-public class getAdmin {
+public class adminUtil {
 
     public admin getAdmin(String adminname){
 

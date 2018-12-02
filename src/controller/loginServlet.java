@@ -1,12 +1,13 @@
 package controller;
 
-import dao.getConn;
 import dao.getUser;
-import model.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,23 +32,23 @@ public class loginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         getUser u=new getUser();
-        String name=u.getUser(username).getPassword();
-        String code=request.getParameter("code");
-        HttpSession session=request.getSession();
-        String randStr=(String) session.getAttribute("randStr");
-        PrintWriter out=response.getWriter();
-        if(!code.equals(randStr)){
-            out.println("验证码有误");
-        }
-        else{
-            if (name!= null &&name.equals(password)){
-                HttpSession sessionUser=request.getSession();
-                sessionUser.setAttribute("username",u.getUser(name));
-                response.sendRedirect("../../index.jsp");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"wrong");
-                response.sendRedirect("../../client/login.html");
+        if (u!=null) {
+            String name = u.getUser(username).getPassword();
+            String code = request.getParameter("code");
+            HttpSession session = request.getSession();
+            String randStr = (String) session.getAttribute("randStr");
+            PrintWriter out = response.getWriter();
+            if (!code.equals(randStr)) {
+                out.println("验证码有误");
+            } else {
+                if (name != null && name.equals(password)) {
+                    HttpSession sessionUser = request.getSession();
+                    sessionUser.setAttribute("username", u.getUser(name));
+                    response.sendRedirect("../../index.jsp");
+                } else {
+                    JOptionPane.showMessageDialog(null, "wrong");
+                    response.sendRedirect("../../client/login.html");
+                }
             }
         }
 

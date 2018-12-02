@@ -10,18 +10,18 @@ package model;
 //管理员信息
 public class admin {
     private String id;
-    private String adminname;
+    private String adminName;
     private String password;
 
     public admin() {
         this.id=null;
-        this.adminname=null;
+        this.adminName=null;
         this.password=null;
     }
 
     public admin(String id, String username, String password) {
         this.id = id;
-        this.adminname = username;
+        this.adminName = username;
         this.password = password;
     }
 
@@ -29,8 +29,8 @@ public class admin {
         return id;
     }
 
-    public String getAdminname() {
-        return adminname;
+    public String getAdminName() {
+        return adminName;
     }
 
     public String getPassword() {
@@ -41,7 +41,7 @@ public class admin {
     public String toString() {
         return "admin{" +
                 "id='" + id + '\'' +
-                ", username='" + adminname + '\'' +
+                ", username='" + adminName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

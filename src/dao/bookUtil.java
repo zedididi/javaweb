@@ -42,7 +42,7 @@ public class bookUtil {
                 if (set.next()){
                     bookModel = new BookModel(set.getInt(1),set.getString(2),set.getString(3),
                             set.getDouble(4),set.getString(5),set.getString(6),set.getString(7));
-                   // System.out.println(bookModel);
+                   System.out.println(bookModel);
                 }
 
             }
@@ -155,6 +155,8 @@ public class bookUtil {
                    // System.out.println("book 插入成功"+new bookUtil().getBook(0,book.getName()));
                 }
             }
+
+            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -178,6 +180,7 @@ public class bookUtil {
                     //System.out.println("category 插入成功"+category);
                 }
             }
+            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -201,12 +204,16 @@ public class bookUtil {
                 pstat.setString(4,book.getImage());
                 pstat.setString(5,book.getDescription());
                 pstat.setInt(6, Integer.parseInt(book.getCategory_id()));
+                pstat.setInt(7,book.getId());
+
+                i=pstat.executeUpdate();
 
                 if (i>0){
                     result=true;
                     //System.out.println("book更新成功："+new bookUtil().getBook(book.getId(),null));
                 }
             }
+            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
