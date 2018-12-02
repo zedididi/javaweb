@@ -31,8 +31,10 @@
         <div class="row">
             <div class="login span4 ">
                 <h1><a href="server/admin.html"  rel="tooltip" data-placement="bottom" data-
-                       placement="bottom" data-toggle="modal" data-target="#myModal"> 欢迎来到<strong>我的</strong>书店</a>
+                       placement="bottom" data-toggle="modal" data-target="#myModal"> 欢迎来到<strong>SuperGod</strong>的书店</a>
                     <span class="red ">.</span></h1>
+                <a class="home" href="index.jsp" rel="tooltip" data-placement="bottom" data-
+                   placement="bottom"  data-toggle="modal" data-target="#myModal"></a>
             </div>
             <div class="links span8">
                 <a class="car" rel="tooltip" data-placement="bottom" data-
@@ -57,6 +59,7 @@
                 Statement stat = conn.createStatement();
                 ResultSet rs = stat.executeQuery(sql);
                 while (rs.next()) {
+
             %>
             <li class=" text-center">
                 <a href='javascript:showBook("<%=rs.getString("id")%>")'><strong><%=rs.getString("name")%></strong></a>
