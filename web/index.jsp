@@ -14,8 +14,15 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <title>网上书店</title>
+    <style>
+        body{
+            background-image: url("images/preview3.jpg");
+            background-position: center center;
+            background-size: cover;
+        }
+    </style>
 </head>
-<body  onload="initAJAX()">
+<body  onload="initAJAX()" <%--style="background-image: url("images/preview3.jpg")--%>>
 <script src="js/jquery.min.js" ></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/commons.js"></script>
@@ -41,7 +48,7 @@
 <div class="row"> <%--下方左右div控制--%>
     <div class="col-md-3"> <%--左侧菜单div控制--%>
         <ul class="nav nav-list">
-            <li class="nav-header">书籍类型</li>
+            <li class="nav-header"><strong>书籍类型</strong></li>
             <%
 
                 String sql = "select id,name,description from category";
@@ -52,7 +59,7 @@
                 while (rs.next()) {
             %>
             <li>
-                <a href='javascript:showBook("<%=rs.getString("id")%>")'><%=rs.getString("name")%></a>
+                <a href='javascript:showBook("<%=rs.getString("id")%>")'><strong><%=rs.getString("name")%></strong></a>
             </li>
             <%
                 }
@@ -61,7 +68,40 @@
             %>
         </ul>
     </div><%--左侧菜单div控制--%>
-    <div class="col-md-9" id="book"></div>
+    <div class="col-md-9" id="book">
+
+
+        <div id="myCarousel" class="carousel slide">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="client/subject.jsp?author=沈复"><img src="images/0.jpg" alt="First slide"></a>
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                    <a href="client/subject.jsp"><img src="images/1.jpg" alt="Second slide"></a>
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                    <a href="client/subject.jsp"><img src="images/2.jpg" alt="Third slide"></a>
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <a class="carousel-control left" href="#myCarousel"
+               data-slide="prev"> <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="carousel-control right" href="#myCarousel"
+               data-slide="next">&rsaquo;</a>
+        </div>
+
+
+    </div>
 </div><%--下方左右div控制--%>
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
