@@ -29,10 +29,10 @@
 <div class="header">
     <div class="container">
         <div class="row">
-            <div class="login span4">
+            <div class="login span4 ">
                 <h1><a href="server/admin.html"  rel="tooltip" data-placement="bottom" data-
                        placement="bottom" data-toggle="modal" data-target="#myModal"> 欢迎来到<strong>我的</strong>书店</a>
-                    <span class="red">.</span></h1>
+                    <span class="red ">.</span></h1>
             </div>
             <div class="links span8">
                 <a class="car" rel="tooltip" data-placement="bottom" data-
@@ -46,9 +46,9 @@
     </div>
 </div> <%--header--%>
 <div class="row"> <%--下方左右div控制--%>
-    <div class="col-md-3"> <%--左侧菜单div控制--%>
+    <div class="col-md-2"> <%--左侧菜单div控制--%>
         <ul class="nav nav-list">
-            <li class="nav-header"><strong>书籍类型</strong></li>
+            <li class="nav-header text-center text-dark"  ><strong >书籍类型</strong></li>
             <%
 
                 String sql = "select id,name,description from category";
@@ -58,7 +58,7 @@
                 ResultSet rs = stat.executeQuery(sql);
                 while (rs.next()) {
             %>
-            <li>
+            <li class=" text-center">
                 <a href='javascript:showBook("<%=rs.getString("id")%>")'><strong><%=rs.getString("name")%></strong></a>
             </li>
             <%
@@ -68,7 +68,7 @@
             %>
         </ul>
     </div><%--左侧菜单div控制--%>
-    <div class="col-md-9" id="book">
+    <div class="col-md-10" id="book">
 
         <div id="myCarousel" class="carousel slide">
             <!-- 轮播（Carousel）指标 -->
