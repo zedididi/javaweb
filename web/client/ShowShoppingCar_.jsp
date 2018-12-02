@@ -14,13 +14,22 @@
     <title>我的购物车</title>
     <style>
         .top{
-            border-bottom: 3px solid red;
+            border-bottom: 3px solid #5f9ea0;
+        }
+        .top_user{
+            display: inline;
         }
         .main{
 
         }
+
         .bottom{
-            height: 50px;
+            background-color:#5f9ea0 ;
+        }
+
+        table{
+            border-collapse:collapse;
+            border: 10px;
         }
 
         td{
@@ -30,29 +39,33 @@
         th{
             text-align: center;
         }
+        a{
+            text-decoration: none;
+        }
     </style>
     <script src="../js/commons.js"></script>
 </head>
 <body onload="initAJAX()">
 <div class="top">
     <h1 class="head" align="center">我的购物车</h1>
-    <div class="top_user">
-        <a href="" class="userInfo">用户</a>&nbsp;&nbsp;<a href="" class="clean">注销</a>
-    </div>
+
 </div>
 </br>
-</br>
-<form action="/DeleteSelectedServlet" method="post" id="delete">
-    <table class="main" border="2" width="100%" cellpadding="0" cellspacing="0">
-        <tr>
-            <th>
-                <input type="checkbox" onclick="selectAll(this)"/>全选
+
+<div class="top_user">
+    <input type="checkbox" onclick="selectAll(this)"/>全选
+    <button style="float: right"><a href="" class="userInfo">用户</a></button>&nbsp;&nbsp;
+    <button style="float: right"><a href="" class="clean">注销</a></button>
+</div>
+    <table class="main"  width="100%">
+        <tr  bgcolor="#5f9ea0">
+            <th width="30px">
             </th>
-            <th align="center" width="45%">商品信息</th>
-            <th>单价</th>
-            <th>数量</th>
-            <th>金额</th>
-            <th>操作</th>
+            <th align="center" width="30%">商品信息</th>
+            <th width="20%">单价</th>
+            <th width="20%">数量</th>
+            <th width="15%">金额</th>
+            <th width="15%">操作</th>
         </tr>
         <%
             HashMap<Integer,Map.Entry<BookModel,Integer>> map = (HashMap<Integer, Map.Entry<BookModel, Integer>>) request.getSession().getAttribute("ShoppingCar");
@@ -63,30 +76,30 @@
         %>
         <tr id="<%=bookModel.getId()%>">
             <td><input type="checkbox" name="choose" value="<%=bookModel.getId()%>" onclick="balance()"/></td>
-            <td style="text-align: left"><img src=<%=bookModel.getImage()%> width="100" height="100"></br>
+            <td><img src=<%=bookModel.getImage()%> width="100" height="100"></br>
                 书名:<%=bookModel.getName()%> 作者:<%=bookModel.getAuthor()%>
             </td>
-            <td><%=bookModel.getPrice()%></td>
+            <td><%=bookModel.getPrice()%>¥</td>
             <td>
                 <input type="button" value="-" onclick="minus(<%=bookModel.getId()%>)">
                 <span id="amount"><%=quality%></span>
                 <input type="button" value="+" onclick="plus(<%=bookModel.getId()%>)">
             </td>
-            <td id="price"><%=bookModel.getPrice()*quality%></td>
+            <td id="price"><%=bookModel.getPrice()*quality%>¥</td>
             <td align="left"><a href="/DeleteBookServlet?BookID=<%=bookModel.getId()%>">删除</a> </td>
         </tr>
         <%
             }
         %>
 
-        <tr class="bottom">
-            <td>
-                <input type="checkbox" onclick="selectAll(this)"/>全选
-            </td>
-            <td align="left"><input type="button" value="删除" onclick="delete_()"></td>
-            <td id="selectedNum">已选商品 件</td>
-            <td id="total">合计</td>
-            <td><a href="getOrder.jsp?userID=1">结算</a> </td>
+        <tr class="bottom" >
+            <th>
+            </th>
+            <th align="left"><input type="button" value="删除" onclick="delete_()"></th>
+            <th id="selectedNum">已选商品 件</th>
+            <th id="total">合计</th>
+            <th><a href="getOrder.jsp?userID=1">结算</a> </th>
+            <th></th>
         </tr>
     </table>
 </form>
@@ -114,7 +127,7 @@
         }
         if (selected == 0){
             document.getElementById("selectedNum").innerHTML = "已选商品" + selected +"件";
-            document.getElementById("total").innerHTML = "合计0元";
+            document.getElementById("total").innerHTML = "合计0¥";
         }
         var url = "/BalanceServlet?BookIDs=" + bookIDs;
         xmlHttp.open("POST",url,true);
@@ -122,7 +135,7 @@
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
                 var array = xmlHttp.responseText.split(" ");
                 document.getElementById("selectedNum").innerHTML = "已选商品" + array[0] +"件";
-                document.getElementById("total").innerHTML = "合计" +array[1] +"元";
+                document.getElementById("total").innerHTML = "合计" +array[1] +"¥";
             }
         }
         xmlHttp.send();
