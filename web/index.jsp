@@ -70,7 +70,6 @@
     </div><%--左侧菜单div控制--%>
     <div class="col-md-9" id="book">
 
-
         <div id="myCarousel" class="carousel slide">
             <!-- 轮播（Carousel）指标 -->
             <ol class="carousel-indicators">
