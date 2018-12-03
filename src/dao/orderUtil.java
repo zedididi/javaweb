@@ -71,14 +71,14 @@ public class orderUtil {
         ArrayList<orderItem> orderItemArrayList=new ArrayList<>();
         boolean result=false;
 
-        int tset=0;
         java.util.Date order_date=null;
         double order_price=0;
         boolean order_state = false;
+        String user_id=null;
         orderUtil orderUtil=new orderUtil();
 
 
-        String sql="select orderitem.id,orders.ordertime,orders.price,orders.state from orderitem,orders where orderitem.order_id=orders.id and orders.id=?";
+        String sql="select orderitem.id,orders.ordertime,orders.price,orders.state from orderitem,orders where orderitem.order_id=orders.id and orders.id=?;";
         try{
             try(PreparedStatement pstat=conn.prepareStatement(sql)){
                 pstat.setInt(1,id);
@@ -95,10 +95,11 @@ public class orderUtil {
                     orderItemArrayList.add(orderItem);
                 }
                 if (result) {
-                    order = new order(id, order_date, order_price, order_state, orderItemArrayList);
+                    order = new order(id, order_date, order_price, order_state,orderItemArrayList);
                    // System.out.println(order);
                 }
             }
+            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -131,7 +132,7 @@ public class orderUtil {
                 if (state==-1)
                     pstat.setBoolean(2,false);
                 else if(state==1)
-                pstat.setBoolean(2,true);
+                    pstat.setBoolean(2,true);
                 set=pstat.executeQuery();
 
                 while (set.next()){
@@ -140,7 +141,6 @@ public class orderUtil {
                     int orders_id=set.getInt(1);
                     user_name=set.getString(2);
                     user_phone=set.getString(3);
-
                     order=new orderUtil().getOrder(orders_id);
                     price+=order.getPrice();
                     orderArrayList.add(order);
@@ -151,6 +151,7 @@ public class orderUtil {
                     /*System.out.println(userOrders);*/
                 }
             }
+            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -164,7 +165,7 @@ public class orderUtil {
         Connection conn=new getConn().getConn();
 
         int i=0;
-        String sql="update orders set state=? where id=?";
+        String sql="update orders set state=? where id=?;";
 
         try{
             try(PreparedStatement pstat=conn.prepareStatement(sql)){
@@ -185,5 +186,56 @@ public class orderUtil {
 
         return result;
     }
+
+    public boolean insertOrder(order order){
+        boolean result=false;
+        int i=0;
+        Connection conn=new getConn().getConn();
+        String sql="insert into orders(ordertime,price,state,user_id) values(?,?,?,?);";
+
+        try{
+            try (PreparedStatement pstat=conn.prepareStatement(sql)){
+                pstat.setObject(1,order.getDate());
+                pstat.setDouble(2,order.getPrice());
+                pstat.setBoolean(3,order.isState());
+                pstat.setString(4,order.getUser_id());
+                i=pstat.executeUpdate();
+                if (i>0) {
+                    result = true;
+                    System.out.println("insertOrder:"+getOrder(order.getId()));
+                }
+
+            }
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean insertOrderItem(orderItem orderItem){
+        boolean result=false;
+        int i=0;
+        Connection conn=new getConn().getConn();
+        String sql="insert into orderItem(quantity,price,order_id,book_id) values(?,?,?,?);";
+        try{
+            try(PreparedStatement pstat=conn.prepareStatement(sql)){
+                pstat.setInt(1, orderItem.getQuantity());
+                pstat.setDouble(2,orderItem.getPrice());
+                pstat.setString(3,orderItem.getOrder_id());
+                pstat.setString(4,orderItem.getBook_id());
+                i=pstat.executeUpdate();
+                if (i>0){
+                    result=true;
+                    System.out.println("insertOrderItem:"+orderItem);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 
 }

@@ -92,7 +92,6 @@
     function setIframe(url) {
         document.getElementById("iframe1").src=url;
     }
-
 </script>
 </body>
 </html>

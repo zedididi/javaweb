@@ -27,7 +27,6 @@ public class adminLogoffServlet extends HttpServlet {
         admin admin= (model.admin) session.getAttribute("admin");
         System.out.println("logoff"+admin);
         session.removeAttribute("admin");
-       // response.sendRedirect("/server/admin.html");
         response.sendRedirect("/server/admin.html");
     }
 

@@ -162,21 +162,24 @@ public class updateAndChangeBookServlet extends HttpServlet {
             }
         }catch (FileUploadBase.FileSizeLimitExceededException e) {
             e.printStackTrace();
-            request.setAttribute("message", "单个文件超出最大值！！！");
+            //request.setAttribute("message", "单个文件超出最大值！！！");
+            request.setAttribute("message", "单个图片超出最大值！！！");
             request.setAttribute("id",bookId);
             System.out.println(message);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);
             return;
         }catch (FileUploadBase.SizeLimitExceededException e) {
             e.printStackTrace();
-            request.setAttribute("message", "上传文件的总的大小超出限制的最大值！！！");
+            //request.setAttribute("message", "上传文件的总的大小超出限制的最大值！！！");
+            request.setAttribute("message", "上传图片的总的大小超出限制的最大值！！！");
             request.setAttribute("id",bookId);
             System.out.println(message);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);
             return;
         }catch (Exception e) {
             e.printStackTrace();
-            message= "文件上传失败！";
+            //message= "文件上传失败！";
+            message= "图片上传失败！";
             request.setAttribute("message", message);
             request.setAttribute("id",bookId);
             System.out.println(message);
