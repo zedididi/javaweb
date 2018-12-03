@@ -82,7 +82,7 @@ public class userUtil {
    }
 
     public boolean insertUser(user user){
-        boolean result=false;
+
         int i=0;
         Connection conn=new getConn().getConn();
         System.out.println(user.toString());
@@ -98,8 +98,9 @@ public class userUtil {
                 i = pstat.executeUpdate();
 
                 if (i > 0) {
-                    result = true;
                     System.out.println("插入成功" + new getUser().getUser(user.getUsername()));
+                   return true;
+
                 }
 
             }
@@ -108,6 +109,6 @@ public class userUtil {
             e.printStackTrace();
         }
 
-        return result;
+        return false;
     }
 }

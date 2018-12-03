@@ -127,7 +127,6 @@
                 <datalist id="list1">
                     <%
                         ArrayList<category> categoryArrayList=bookUtil.getAllCategory();
-                        //System.out.println(categoryArrayList);
                         for (category c:categoryArrayList
                                 ) {
                     %>

@@ -66,7 +66,7 @@
                 int num=0;
 %>
 <div id="table1">
-<table class="hovertable" border="1" width="100%">
+<table  border="1" width="100%">
     <caption><h2>初始订单</h2></caption>
     <tr>
         <th>用户ID</th>
@@ -102,7 +102,7 @@
         初始&nbsp;<button onclick="sendRequest(<%=order.getId()%>,<%=num%>)">修改状态</button></td>
     </tr>
 </table>
-<table class="hovertable" width="100%" border="1">
+<table  width="100%" border="1">
     <tr>
         <th>子订单号</th>
         <th>书本序号</th>

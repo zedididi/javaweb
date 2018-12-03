@@ -21,26 +21,8 @@
 <body onload="initAJAX()">
 
 <div>
-    <%
-        request.setCharacterEncoding("utf-8");
-        String message= (String) request.getAttribute("message");
-        String id= (String) request.getAttribute("id");
-        request.setAttribute("message",null);
-        request.setAttribute("id",null);
-        System.out.println("message"+message);
-        System.out.println("id"+id);
-        String bookId=null;
-        if (message!=null&&id!=null){
-            bookId=id;
-            out.print("<h3 id=\"message\">"+message+"</h3>");
-        }else {
-            bookId=request.getParameter("bookId");
-        }
-        bookUtil bookUtil=new bookUtil();
-    %>
     <h4>提示：</h4>
-    <h5><span style="font-size: 23px">1.</span>输入序号或者书名点击搜索来查询所需修改的书籍</h5>
-    <h5><span style="font-size: 23px">2.</span>在出现的表格上修改书籍信息，点击修改，修改书籍信息</h5>
+    <h5><span style="font-size: 23px">1.</span>所有信息必填</h5>
 </div>
 <div class="modal-body">
 <form class="form-group"  method="post" action="/updateAndChangeBookServlet" enctype="multipart/form-data">
@@ -63,8 +45,8 @@
             <input name="category_id" class="form-control" type="text" list="list1" placeholder="非零的正整数"  required pattern="^[1-9]\d*$">
             <datalist id="list1">
                 <%
+                    bookUtil bookUtil=new bookUtil();
                     ArrayList<category> categoryArrayList=bookUtil.getAllCategory();
-                    //System.out.println(categoryArrayList);
                     for (category c:categoryArrayList
                             ) {
                 %>
@@ -91,6 +73,20 @@
 </form>
 </div>
 <%
+    request.setCharacterEncoding("utf-8");
+    String message= (String) request.getAttribute("message");
+    String id= (String) request.getAttribute("id");
+    request.setAttribute("message",null);
+    request.setAttribute("id",null);
+    System.out.println("message"+message);
+    System.out.println("id"+id);
+    String bookId=null;
+    if (message!=null&&id!=null){
+        bookId=id;
+        out.print("<h3 id=\"message\">"+message+"</h3>");
+    }else {
+        bookId=request.getParameter("bookId");
+    }
     if (bookId!=null&&bookId!=""){//当输入不为空时
 %>
 <div id="table1">
