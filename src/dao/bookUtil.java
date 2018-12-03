@@ -28,7 +28,7 @@ public class bookUtil {
         if (name==null)
             sql+=" id=?;";
         else
-            sql+=" name=?";
+            sql+=" name=?;";
         ResultSet set=null;
         try{
             try(PreparedStatement pstat=conn.prepareStatement(sql)) {

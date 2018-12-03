@@ -144,8 +144,11 @@ public class order implements Comparable<order> {
      */
     @Override
     public int compareTo(order o) {
-        int i=this.getDate().compareTo(o.getDate());
+        int i = this.getDate().compareTo(o.getDate());
         System.out.println(i);
-        return this.getDate().compareTo(o.getDate());
+        if (i < 0)
+            return -1;/*this.getDate().compareTo(o.getDate())*/
+        else
+            return 1;
     }
 }

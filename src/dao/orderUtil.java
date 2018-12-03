@@ -123,7 +123,7 @@ public class orderUtil {
         String user_name=null;
         String user_phone=null;
 
-        String sql=sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?;";
+        String sql=sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?";
         if (state==-1||state==1)
             sql += " and orders.state=? ;";
         try{
@@ -132,7 +132,7 @@ public class orderUtil {
                 if (state==-1)
                     pstat.setBoolean(2,false);
                 else if(state==1)
-                pstat.setBoolean(2,true);
+                    pstat.setBoolean(2,true);
                 set=pstat.executeQuery();
 
                 while (set.next()){
