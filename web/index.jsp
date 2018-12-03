@@ -15,11 +15,11 @@
     <link href="css/style.css" rel="stylesheet"/>
     <title>网上书店</title>
     <style>
-        body{
+        /*body{
             background-image: url("images/preview3.jpg");
             background-position: center center;
             background-size: cover;
-        }
+        }*/
     </style>
 </head>
 <body  onload="initAJAX()" <%--style="background-image: url("images/preview3.jpg")--%>>
@@ -73,7 +73,7 @@
     </div><%--左侧菜单div控制--%>
     <div class="col-md-10" id="book">
 
-        <div id="myCarousel" class="carousel slide">
+        <div id="myCarousel" class="carousel slide" style="width: 80%;">
             <!-- 轮播（Carousel）指标 -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
