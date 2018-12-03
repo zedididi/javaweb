@@ -87,11 +87,11 @@
                     <div class="carousel-caption"></div>
                 </div>
                 <div class="item">
-                    <a href="client/subject.jsp"><img src="images/1.jpg" alt="Second slide"></a>
+                    <a href="client/cartoon.jsp?category_id=3"><img src="images/1.jpg" alt="Second slide"></a>
                     <div class="carousel-caption"></div>
                 </div>
                 <div class="item">
-                    <a href="client/subject.jsp"><img src="images/2.jpg" alt="Third slide"></a>
+                    <a href=""><img src="images/2.jpg" alt="Third slide"></a>
                     <div class="carousel-caption"></div>
                 </div>
             </div>

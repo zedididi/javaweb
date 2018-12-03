@@ -32,7 +32,7 @@
 
 %>
 <div class="col-sm-9 col-md-2" >
-    <div class="thumbnail"  style="background-color: #269abc;">
+    <div class="thumbnail"  style="background-color: #b0e5ff;">
         <div style="text-align: center;opacity: 1">
         <a href="" class="btn btn-default" role="button" data-toggle="modal" data-target="#<%=rs.getString("name")%>"><img width="150px" height="200px" src=<%=rs.getString("image")%>></a>
         </div>
