@@ -139,7 +139,7 @@ public class bookUtil {
         boolean result=false;
         int i=0;
         Connection conn=new getConn().getConn();
-        String sql="insert into book(name,author,price,image,description,category_id) values(?,?,?,?,?,?)";
+        String sql="insert into book(name,author,price,image,description,category_id) values(?,?,?,?,?,?);";
         try{
             try(PreparedStatement pstate=conn.prepareStatement(sql)) {
                 pstate.setString(1,book.getName());
