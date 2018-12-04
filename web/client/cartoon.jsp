@@ -71,6 +71,7 @@
             </div>
             <div style="text-align: center">
                 <p><%=rs.getString("name")%></p>
+                <p style="text-decoration: line-through">￥1000</p>
                 <p style="color: red">￥<%=rs.getString("price")%></p>
             </div>
         </div>

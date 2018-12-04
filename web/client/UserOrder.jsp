@@ -14,7 +14,7 @@
 <form action="">
 <div style="text-align: center">
     <p>请扫码支付！</p>
-    <img width="200px" height="200px" src="../images/15797895764.jpg"></br>
+    <img width="200px" height="200px" src="../images/15797895764.jpg"><img width="200px" height="200px" src="../images/wjl.jpg"><img width="200px" height="200px" src="../images/lzd.jpg"></br>
     <input type="submit" value="确认支付">
 </div>
 </form>
