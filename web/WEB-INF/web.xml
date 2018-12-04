@@ -24,7 +24,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
-        <url-pattern>/controller/loginServlet</url-pattern>
+        <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>AddBookServlet</servlet-name>
@@ -107,5 +107,13 @@
     <servlet-mapping>
         <servlet-name>deleteServlet</servlet-name>
         <url-pattern>/deleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>userLogoffServlet</servlet-name>
+        <servlet-class>controller.userLogoffServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userLogoffServlet</servlet-name>
+        <url-pattern>/userLogoffServlet</url-pattern>
     </servlet-mapping>
 </web-app>

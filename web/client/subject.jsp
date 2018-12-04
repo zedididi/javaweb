@@ -69,8 +69,6 @@
             <p style="color: red">￥<%=rs.getString("price")%></p>
             </div>
         </div>
-
-
 <%
         }
         pstat.close();

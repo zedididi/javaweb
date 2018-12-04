@@ -46,9 +46,9 @@
             <div class="links span8">
                 <a  href='showAdmin.jsp' rel="tooltip"  data-
                    placement="bottom" data-toggle="modal" data-target="#myModal"
-                ><img src="graphic.jsp?img=<%=admin.getAdminName()%>"></a>
+                ><img src="../wordImage.jsp?img=<%=admin.getAdminName()%>"></a>
                 <a  href="/adminLogoffServlet" onclick="clear()" rel="tooltip" data-placement="bottom"
-                   ><img src="graphic.jsp?img=注销"></a>
+                   ><img src="../wordImage.jsp?img=注销"></a>
             </div>
         </div>
     </div>

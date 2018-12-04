@@ -1,7 +1,8 @@
+<%@ page import="dao.getConn" %>
+<%@ page import="model.user" %>
 <%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="dao.getConn" %><%--
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: 16051
   Date: 2018/11/28
@@ -20,12 +21,22 @@
             background-position: center center;
             background-size: cover;
         }*/
+        a.a1{
+            margin-right: 7px;
+        }
     </style>
 </head>
 <body  onload="initAJAX()" <%--style="background-image: url("images/preview3.jpg")--%>>
 <script src="js/jquery.min.js" ></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/commons.js"></script>
+
+<%
+    request.setCharacterEncoding("utf-8");
+    user user= (model.user) request.getSession().getAttribute("user");
+    System.out.println("index"+user);
+
+%>
 <div class="header">
     <div class="container">
         <div class="row">
@@ -37,12 +48,27 @@
                    placement="bottom"  data-toggle="modal" data-target="#myModal"></a>
             </div>
             <div class="links span8">
-                <a class="car" rel="tooltip" data-placement="bottom" data-
-                   placement="bottom" data-toggle="modal" href="client/ShowShoppingCar_.jsp"></a>
-                <a class="login" href="client/login.html" rel="tooltip" data-placement="bottom" data-
-                   placement="bottom"  data-toggle="modal" data-target="#myModal"></a>
-                <a class="register" href="client/register.html" rel="tooltip" data-placement="bottom"
-                   data-toggle="modal" data-target="#myModal"></a>
+                <%
+                    if (user!= null){
+                %>
+                <a  rel="tooltip" data-placement="bottom" data-
+                    placement="bottom" data-toggle="modal" href="client/ShowShoppingCar_.jsp"><img src="images/car.png"></a>
+                <a class="a1" href="no.html" rel="tooltip" data-placement="bottom" data-
+                    placement="bottom"  data-toggle="modal" data-target="#myModal"><img src="wordImage.jsp?img=<%=user.getUsername()%>"></a>
+                <a class="a1" href="/userLogoffServlet" rel="tooltip" data-placement="bottom"
+                    data-toggle="modal" ><img src="wordImage.jsp?img=注销"></a>
+
+                <%
+                    }else
+                    {
+                        %>
+                <a  href="client/login.html" rel="tooltip" data-placement="bottom" data-
+                    placement="bottom"  data-toggle="modal" ><img src="images/login.png"></a>
+                <a  href="client/register.html" rel="tooltip" data-placement="bottom"
+                    data-toggle="modal" ><img src="images/register.png"></a>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>

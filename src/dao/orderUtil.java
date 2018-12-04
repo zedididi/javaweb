@@ -129,7 +129,7 @@ public class orderUtil {
         String user_name=null;
         String user_phone=null;
 
-        String sql=sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?";
+        String sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?";
         if (state==-1||state==1)
             sql += " and orders.state=? ;";
         try{
@@ -163,6 +163,61 @@ public class orderUtil {
         }
 
         System.out.println(userOrders);
+
+        return userOrders;
+    }
+
+    public userOrders getUserAllOrders(int id){
+        //id  user表的id
+        // state属性含义: -1 代表初始订单， 0 代表 初始和已完成订单， 1 代表已完成订单
+        Connection conn=new getConn().getConn();
+        userOrders userOrders=null;
+        ResultSet set=null;
+        boolean result=false;
+        Comparator<order> orderComparator=new Comparator<order>() {
+            @Override
+            public int compare(order o1, order o2) {
+                if (o2.getDate().compareTo(o1.getDate())!=0)
+                    return o2.getDate().compareTo(o1.getDate());
+                else
+                    return o1.getId()-o2.getId();
+            }
+        };
+        ArrayList<order> orderArrayList=new ArrayList<>();
+        order order=null;
+        double price=0;
+
+        String user_name=null;
+        String user_phone=null;
+
+        String sql="select orders.id,user.username,user.phone from user,orders where orders.user_id=user.id and user.id=?";
+
+        try{
+            try(PreparedStatement pstat=conn.prepareStatement(sql)){
+                pstat.setInt(1,id);
+                set=pstat.executeQuery();
+
+                while (set.next()){
+                    result=true;
+                    int orders_id=set.getInt(1);
+                    user_name=set.getString(2);
+                    user_phone=set.getString(3);
+                    order=new orderUtil().getOrder(orders_id);
+                    price+=order.getPrice();
+                    orderArrayList.add(order);
+                }
+
+                if (result){
+                    Collections.sort(orderArrayList,orderComparator);
+                    userOrders=new userOrders(id,user_name,user_phone,price,orderArrayList);
+                }
+            }
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+       // System.out.println(userOrders);
 
         return userOrders;
     }

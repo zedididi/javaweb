@@ -19,6 +19,15 @@ public class orderItem {
     private String book_id;
     private book book;
 
+    public orderItem() {
+        this.id = 0;
+        this.quantity = 0;
+        this.price = 0;
+        this.book = null;
+        this.order_id=null;
+        this.book_id=null;
+    }
+
     public orderItem(int id, int quantity, double price, model.book book) {
         this.id = id;
         this.quantity = quantity;
