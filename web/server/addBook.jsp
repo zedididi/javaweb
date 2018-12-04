@@ -21,26 +21,8 @@
 <body onload="initAJAX()">
 
 <div>
-    <%
-        request.setCharacterEncoding("utf-8");
-        String message= (String) request.getAttribute("message");
-        String id= (String) request.getAttribute("id");
-        request.setAttribute("message",null);
-        request.setAttribute("id",null);
-        System.out.println("message"+message);
-        System.out.println("id"+id);
-        String bookId=null;
-        if (message!=null&&id!=null){
-            bookId=id;
-            out.print("<h3 id=\"message\">"+message+"</h3>");
-        }else {
-            bookId=request.getParameter("bookId");
-        }
-        bookUtil bookUtil=new bookUtil();
-    %>
     <h4>提示：</h4>
-    <h5><span style="font-size: 23px">1.</span>输入序号或者书名点击搜索来查询所需修改的书籍</h5>
-    <h5><span style="font-size: 23px">2.</span>在出现的表格上修改书籍信息，点击修改，修改书籍信息</h5>
+    <h5><span style="font-size: 23px">1.</span>所有信息必填</h5>
 </div>
 <div class="modal-body">
 <form class="form-group"  method="post" action="/updateAndChangeBookServlet" enctype="multipart/form-data">
@@ -48,23 +30,23 @@
         <legend>书籍信息修改</legend>
         <div class="form-group">
             <label>书名：</label>
-            <input name="bookName" class="form-control" type="text" placeholder="请输入书名" required>
+            <input name="bookName" class="form-control" type="text" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
         </div>
         <div class="form-group">
             <label>作者：</label>
-            <input name="bookAuthor" class="form-control" type="text" placeholder="请输入作者" required>
+            <input name="bookAuthor" class="form-control" type="text" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
         </div>
         <div class="form-group">
             <label>单价：</label>
-            <input name="bookPrice" class="form-control" type="text" placeholder="请输入价格" required>
+            <input name="bookPrice" class="form-control" type="text" placeholder="有1~2位小数的正实数" required pattern="^[0-9]+(.[0-9]{1,2})?$">
         </div>
         <div class="form-group">
             <label>类型：</label>
-            <input name="category_id" class="form-control" type="text" placeholder="请选择类型" list="list1" required>
+            <input name="category_id" class="form-control" type="text" list="list1" placeholder="非零的正整数"  required pattern="^[1-9]\d*$">
             <datalist id="list1">
                 <%
+                    bookUtil bookUtil=new bookUtil();
                     ArrayList<category> categoryArrayList=bookUtil.getAllCategory();
-                    //System.out.println(categoryArrayList);
                     for (category c:categoryArrayList
                             ) {
                 %>
@@ -76,7 +58,7 @@
         </div>
         <div class="form-group">
         <label>描述：</label>
-            <textarea name="bookDescription" class="form-control"  placeholder="请输入描述" required></textarea>
+            <textarea name="bookDescription" cols="4" class="form-control"  placeholder="请输入描述" required></textarea>
         </div>
 
         <%--<input type="radio">--%>
@@ -91,6 +73,20 @@
 </form>
 </div>
 <%
+    request.setCharacterEncoding("utf-8");
+    String message= (String) request.getAttribute("message");
+    String id= (String) request.getAttribute("id");
+    request.setAttribute("message",null);
+    request.setAttribute("id",null);
+    System.out.println("message"+message);
+    System.out.println("id"+id);
+    String bookId=null;
+    if (message!=null&&id!=null){
+        bookId=id;
+        out.print("<h3 id=\"message\">"+message+"</h3>");
+    }else {
+        bookId=request.getParameter("bookId");
+    }
     if (bookId!=null&&bookId!=""){//当输入不为空时
 %>
 <div id="table1">

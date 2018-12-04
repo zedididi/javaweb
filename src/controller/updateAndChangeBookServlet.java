@@ -43,7 +43,6 @@ public class updateAndChangeBookServlet extends HttpServlet {
         String bookId = null,name=null ,author=null ,price=null,description=null ,category_id = null,imagesPath=null;
         //得到上传文件的保存目录，将上传的文件存放于out文件夹下的部署文件里的images文件夹里
         String savePath1 = this.getServletContext().getRealPath("/images");
-        System.out.println(savePath1);
 
         //自己设置上传的地址 ，要想保存在你的项目里而不是out下的部署文件里，可以设置这个
         String savePath2="C:\\Users\\16051\\javaweb\\web\\images";
@@ -101,7 +100,6 @@ public class updateAndChangeBookServlet extends HttpServlet {
                     //解决普通输入项的数据的中文乱码问题
                     String value = item.getString("UTF-8");
                     //value = new String(value.getBytes("iso8859-1"),"UTF-8");
-                    System.out.println(name1 + "=" + value);
                     if (name1.equals("bookId"))
                         //解决普通输入项的数据的中文乱码问题
                         bookId=value;
@@ -136,7 +134,6 @@ public class updateAndChangeBookServlet extends HttpServlet {
                     String saveFilename = makeFileName(filename);
                     //图片读取的相对地址
                     imagesPath="../images/"+saveFilename;
-                    System.out.println("imagesPath"+imagesPath);
                     //得到文件的保存目录
                     String realSavePath = savePath1;
                     //创建一个文件输出流
@@ -162,31 +159,30 @@ public class updateAndChangeBookServlet extends HttpServlet {
             }
         }catch (FileUploadBase.FileSizeLimitExceededException e) {
             e.printStackTrace();
-            request.setAttribute("message", "单个文件超出最大值！！！");
+            //request.setAttribute("message", "单个文件超出最大值！！！");
+            request.setAttribute("message", "单个图片超出最大值！！！");
             request.setAttribute("id",bookId);
-            System.out.println(message);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);
             return;
         }catch (FileUploadBase.SizeLimitExceededException e) {
             e.printStackTrace();
-            request.setAttribute("message", "上传文件的总的大小超出限制的最大值！！！");
+            //request.setAttribute("message", "上传文件的总的大小超出限制的最大值！！！");
+            request.setAttribute("message", "上传图片的总的大小超出限制的最大值！！！");
             request.setAttribute("id",bookId);
-            System.out.println(message);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);
             return;
         }catch (Exception e) {
             e.printStackTrace();
-            message= "文件上传失败！";
+            //message= "文件上传失败！";
+            message= "图片上传失败！";
             request.setAttribute("message", message);
             request.setAttribute("id",bookId);
-            System.out.println(message);
         }
 
         bookUtil bookUtil=new bookUtil();
         if(bookId==null){   //前端执行插入操作
             bookUtil.insertBook(new BookModel(-1,name,author,Double.parseDouble(price),imagesPath,description,category_id));
             bookId= String.valueOf(bookUtil.getBook(0,name).getId());
-            System.out.println("bookID"+bookId);
             request.setAttribute("message",message);
             request.setAttribute("id",bookId);
             request.getRequestDispatcher("/server/addBook.jsp").forward(request, response);
@@ -197,9 +193,6 @@ public class updateAndChangeBookServlet extends HttpServlet {
             request.setAttribute("id",bookId);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);
         }
-            System.out.println(message);
-
-
 
     }
 

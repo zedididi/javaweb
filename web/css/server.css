@@ -8,8 +8,7 @@ div{
 #table1{
     margin-left: 10px;
 }
-table.hovertable {
-    margin-top: 2px;
+table{
     margin-bottom: 0px;
     text-align: center;
     font-family: verdana,arial,sans-serif;
@@ -19,7 +18,10 @@ table.hovertable {
     border-color: #999999;
     border-collapse: collapse;
 }
-table.hovertable th {
+table.hovertable {
+    margin-top: 2px;
+}
+table th {
 
     background-color:#c3dde0;
     border-width: 1px;
@@ -27,10 +29,10 @@ table.hovertable th {
     border-style: solid;
     border-color: #a9c6c9;
 }
-table.hovertable tr {
-    background-color:#d4e3e5;
+table tr {
+   /* background-color:#d4e3e5;*/
 }
-table.hovertable td {
+table td {
     border-width: 1px;
     padding: 8px;
     border-style: solid;
@@ -39,4 +41,8 @@ table.hovertable td {
 #message{
     color: red;
     font-weight: bolder;
+}
+
+textarea{
+    column-span: 4;
 }

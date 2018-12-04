@@ -14,7 +14,7 @@
     <title>金庸专题</title>
     <style>
         body{
-            background-image: url("../images/actor.jpg");
+            background-image: url("../images/头像.jpg");
             background-size: cover;
         }
         .item{

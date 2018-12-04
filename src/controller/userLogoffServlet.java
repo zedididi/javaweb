@@ -9,19 +9,18 @@ import java.io.IOException;
 
 /**
  * @auther: Liu Zedi.
- * @date: Create in 2018/12/2  20:25
+ * @date: Create in 2018/12/4  13:56
  * @package: ${PACKAGE_NAME}
  * @project: javaweb
  */
-@WebServlet(name = "adminLogoffServlet")
-public class adminLogoffServlet extends HttpServlet {
-
+@WebServlet(name = "userLogoffServlet")
+public class userLogoffServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
         request.setCharacterEncoding("utf-8");
-        request.getSession().removeAttribute("admin");
-        response.sendRedirect("/server/admin.html");
+        request.getSession().removeAttribute("user");
+        response.sendRedirect("/index.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

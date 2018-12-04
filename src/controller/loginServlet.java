@@ -1,6 +1,7 @@
 package controller;
 
-import dao.getUser;
+import dao.userUtil;
+import model.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,26 +32,30 @@ public class loginServlet extends HttpServlet {
         response.setCharacterEncoding("gb2312");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        getUser u=new getUser();
-        if (u!=null) {
-            String name = u.getUser(username).getPassword();
-            String code = request.getParameter("code");
-            HttpSession session = request.getSession();
-            String randStr = (String) session.getAttribute("randStr");
-            PrintWriter out = response.getWriter();
-            if (!code.equals(randStr)) {
+        userUtil u=new userUtil();
+
+        user user=u.getUser(0,username);
+        String userPassword = user.getPassword();
+        String code = request.getParameter("code");
+        HttpSession session = request.getSession();
+        String randStr = (String) session.getAttribute("randStr");
+        System.out.println("randStr"+randStr);
+        PrintWriter out = response.getWriter();
+        if (!code.equals(randStr)) {
                 out.println("验证码有误");
+        } else {
+            if (userPassword != null && userPassword.equals(password)) {
+                    session.setAttribute("user", user);
+                    System.out.println("login:"+session.getAttribute("user"));
+                   // request.getRequestDispatcher("/index.jsp").forward(request, response);
+                    response.sendRedirect("/index.jsp");
             } else {
-                if (name != null && name.equals(password)) {
-                    HttpSession sessionUser = request.getSession();
-                    sessionUser.setAttribute("username", u.getUser(name));
-                    response.sendRedirect("../../index.jsp");
-                } else {
+                    System.out.println("name 为空 ");
                     JOptionPane.showMessageDialog(null, "wrong");
-                    response.sendRedirect("../../client/login.html");
+                    response.sendRedirect("/client/login.html");
                 }
             }
-        }
+
 
     }
 

@@ -12,17 +12,27 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
     <title>网上书店</title>
+    <style>
+        #iframe1{
+            width: 100%;
+            height: 100%;
+            float: right;
+        }
+    </style>
 </head>
 <body  onload="initAJAX()">
 <script src="../js/jquery.min.js" ></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/commons.js"></script>
+
 <%
     response.setCharacterEncoding("utf-8");
     request.setCharacterEncoding("utf-8");
-
+    //下面三条代码实现页面不缓存，是实现注销功能的   原理：浏览器在前进后退到该页面时，就会重新发送请求
+    response.setHeader("Cache-Control", "private, no-cache, no-store, must-revalidate"); //HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+    response.setDateHeader("Expires", -1); //prevents caching at the proxy server
     admin admin= (model.admin) session.getAttribute("admin");
-    System.out.println("adminUI"+admin);
     if (admin==null)
         response.sendRedirect("admin.html");
 %>
@@ -36,14 +46,14 @@
             <div class="links span8">
                 <a  href='showAdmin.jsp' rel="tooltip"  data-
                    placement="bottom" data-toggle="modal" data-target="#myModal"
-                ><%=admin.getAdminName()%></a>
+                ><img src="../wordImage.jsp?img=<%=admin.getAdminName()%>"></a>
                 <a  href="/adminLogoffServlet" onclick="clear()" rel="tooltip" data-placement="bottom"
-                   >注销</a>
+                   ><img src="../wordImage.jsp?img=注销"></a>
             </div>
         </div>
     </div>
 </div> <%--header--%>
-<div class="row"> <%--下方左右div控制--%>
+<div class="row" > <%--下方左右div控制--%>
     <div class="col-md-3"> <%--左侧菜单div控制--%>
         <ul class="nav nav-list">
             <li class="nav-header" style="font-size: large;font-style: oblique;font-weight: bold">后台功能</li>
@@ -57,11 +67,12 @@
             <li><a href='javascript:setIframe("getBook.jsp")'>书籍信息查询</a></li>
             <li><a href='javascript:setIframe("updateBook.jsp")'>书籍信息修改</a> </li>
             <li><a href='javascript:setIframe("addBook.jsp")'>书籍信息输入</a> </li>
+            <li><a href='javascript:setIframe("deleteBook.jsp")'>书籍信息删除</a> </li>
         </ul>
     </div><%--左侧菜单div控制--%>
 
-    <div class="col-md-9" id="book"><%--书籍布局控制--%>
-        <iframe id="iframe1" width="100%" height="100%">
+    <div class="col-md-9" id="book" ><%--书籍布局控制--%>
+        <iframe id="iframe1">
 
         </iframe>
     </div>
@@ -75,20 +86,11 @@
         </div>
     </div>
 </div>
-<%
-    response.setHeader("Cache-Control", "no-store"); //HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
-    response.setDateHeader("Expires", 0); //prevents caching at the proxy server
-%>
+
 <script src="../js/bgDataQuery.js"></script>
 <script>
     function setIframe(url) {
         document.getElementById("iframe1").src=url;
-    }
-
-    function clear() {
-        //window.history.forward(1);
-        //window.location.replace('admin.html')
     }
 </script>
 </body>

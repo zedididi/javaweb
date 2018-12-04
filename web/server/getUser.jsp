@@ -19,17 +19,23 @@
     <link href="../css/server.css" rel="stylesheet">
 </head>
 <body onload="initAJAX()">
+<div>
+    <h4>提示：</h4>
+    <h5><span style="font-size: 23px">1.</span>输入序号或者用户名点击搜索来查询</h5>
+    <h5><span style="font-size: 23px">2.</span>当不输入查询为查询所有</h5>
+    <h5><span style="font-size: 23px">2.</span>当都输入查询，以序号为索引</h5></h5>
+</div>
 <div class="modal-body">
     <form class="form-group" action="getUser.jsp" method="post" >
         <fieldset>
             <legend>用户信息查询</legend>
             <div class="form-group">
                 <label>序号：</label>
-                <input name="userId" class="form-control" type="search" placeholder="请输入序号">
+                <input name="userId" class="form-control" type="search" placeholder="非零的正整数"  pattern="^[1-9]\d*$">
             </div>
             <div class="form-group">
                 <label>用户名：</label>
-                <input name="userName" class="form-control" type="search" placeholder="请输入用户名">
+                <input name="userName" class="form-control" type="search" placeholder="中文、英文、数字包括下划线"  pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div>
                 <input type="submit" value="查 询" >

@@ -16,6 +16,7 @@
     <title>finishOrders</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/server.css" rel="stylesheet">
 </head>
 <body>
 <div class="modal-body">
@@ -24,7 +25,7 @@
             <legend>已完成订单查询</legend>
             <div class="form-group">
                 <label>用户名：</label>
-                <input name="search" class="form-control" type="search" placeholder="请输入用户名">
+                <input name="search" class="form-control" type="search" placeholder="中文、英文、数字包括下划线" required pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$">
             </div>
             <div>
                 <input type="submit" value="查 询" >
@@ -44,8 +45,8 @@
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 %>
 <div id="table1">
-<table class="hovertable" border="1" width="100%">
-    <caption><h2>初始订单</h2></caption>
+<table  border="1" width="100%">
+    <caption><h2>已完成订单</h2></caption>
     <tr>
         <th>用户ID</th>
         <th>用户名</th>
@@ -64,7 +65,7 @@
                 for (order order:orderArrayList
                      ) {
  %>
-<table class="hovertable" border="1" width="100%">
+<table border="1" class="hovertable" width="100%">
     <tr>
         <th>订单号</th>
         <th>订单时间</th>
@@ -78,7 +79,7 @@
         <td>已完成</td>
     </tr>
 </table>
-<table class="hovertable" width="100%" border="1">
+<table  width="100%" border="1">
     <tr>
         <th>子订单号</th>
         <th>书本序号</th>

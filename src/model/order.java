@@ -20,13 +20,33 @@ public class order {
     private Date date;
     private double price;
     private boolean state; //true代表已完成订单，false代表初始订单
+    private String user_id;
     private ArrayList<orderItem> orderItemArrayList;
+
+    public order() {
+        this.id=0;
+        this.date=null;
+        this.price=0;
+        this.state=false;
+        this.user_id=null;
+        this.orderItemArrayList=null;
+    }
 
     public order(int id, Date date, double price, boolean state, ArrayList<orderItem> orderItemArrayList) {
         this.id = id;
         this.date = date;
         this.price = price;
         this.state = state;
+        this.orderItemArrayList = orderItemArrayList;
+        this.user_id=null;
+    }
+
+    public order(int id, Date date, double price, boolean state, String user_id , ArrayList<orderItem> orderItemArrayList) {
+        this.id = id;
+        this.date = date;
+        this.price = price;
+        this.state = state;
+        this.user_id=user_id;
         this.orderItemArrayList = orderItemArrayList;
     }
 
@@ -71,6 +91,14 @@ public class order {
         this.orderItemArrayList = orderItemArrayList;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     @Override
     public String toString() {
         return "order{" +
@@ -78,7 +106,17 @@ public class order {
                 ", date=" + date +
                 ", price=" + price +
                 ", state=" + state +
+                ", user_id='" + user_id + '\'' +
                 ", orderItemArrayList=" + orderItemArrayList +
                 '}';
     }
+
+
+    /*@Override
+    public int compareTo(order o) {
+        *//*int result=o.getDate().compareTo(this.getDate());
+        System.out.println(result);*//*
+
+        return (this.getDate().getTime()>o.getDate().getTime()?-1:(this.getDate().getTime()==o.getDate().getTime()?0:1));
+    }*/
 }

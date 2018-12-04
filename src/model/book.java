@@ -22,6 +22,9 @@ public class book {
     private int category_id;
     private String category_name;
 
+    public book() {
+    }
+
     public book(int id, String name, String author, double price, String image, String description, int category_id, String category_name) {
         this.id = id;
         this.name = name;
