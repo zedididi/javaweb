@@ -49,6 +49,11 @@
 %>
 <div align="center">全部订单</div>
 <hr color="#5f9ea0">
+<a class="home" href="../index.jsp" rel="tooltip" data-placement="bottom" data-
+   placement="bottom"  data-toggle="modal" data-target="#myModal"><img src="../images/home.png"></a>
+<div align="right">
+    <a href="../client/UserOrder.jsp" class="pay"><img src="../images/pay.jpg" width="50" height="50"></a>
+</div>
 <input type="checkbox" name="selectAll" value="value" id="check" >全选<a href="#bottom" style="float: right;text-decoration: none;">直达底部</a>
 
 <table id="table1">
@@ -93,9 +98,7 @@
 %>
 <%--设置bottom，实现直达底部功能--%>
 <div name="bottom" style="position:fixed ; bottom:0px;width: 1500px;">
-    <div align="right">
-    <a href="../no.html" class="pay"><img src="../images/pay.jpg" width="50" height="50"></a>
-    </div>
+
 </div>
 
 

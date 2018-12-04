@@ -60,8 +60,6 @@
 
 <div class="top_user">
     <input type="checkbox" onclick="selectAll(this)"/>全选
-    <button style="float: right"><a href="" class="userInfo">用户</a></button>&nbsp;&nbsp;
-    <button style="float: right"><a href="" class="clean">注销</a></button>
     <a style="float: right" href="../index.jsp"><img src="../images/home.png"></a>
 
 </div>
