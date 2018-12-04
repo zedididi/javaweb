@@ -99,8 +99,8 @@
             <th>
             </th>
             <th align="left"><input type="button" value="删除" onclick="delete_()"></th>
-            <th id="selectedNum">已选商品 件</th>
-            <th id="total">合计</th>
+            <th id="selectedNum">已选商品0件</th>
+            <th id="total">合计￥0</th>
             <th><a href="getOrder.jsp">结算</a></th>
             <th></th>
         </tr>
