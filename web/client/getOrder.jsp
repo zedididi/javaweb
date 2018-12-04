@@ -54,7 +54,7 @@
 <div align="right">
     <a href="../client/UserOrder.jsp" class="pay"><img src="../images/pay.jpg" width="50" height="50"></a>
 </div>
-<input type="checkbox" name="selectAll" value="value" id="check" >全选<a href="#bottom" style="float: right;text-decoration: none;">直达底部</a>
+<input type="checkbox" name="selectAll" value="value" id="check" >全选
 
 <table id="table1">
     <tbody id="table2">
@@ -97,8 +97,51 @@
         out.print("你未登录，无法结算！！！！！！");
 %>
 <%--设置bottom，实现直达底部功能--%>
-<div name="bottom" style="position:fixed ; bottom:0px;width: 1500px;">
+<div>
+    <hr />
+    <form class="form-horizontal" style="margin-top: 5px; margin-left: 150px;">
+        <div class="form-group">
+            <label for="username" class="col-sm-1 control-label">地址</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="username" placeholder="请输入收货地址">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-1 control-label">收货人</label>
+            <div class="col-sm-5">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="请输收货人">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmpwd" class="col-sm-1 control-label">电话</label>
+            <div class="col-sm-5">
+                <input type="password" class="form-control" id="confirmpwd" placeholder="请输入联系方式">
+            </div>
+        </div>
+    </form>
 
+    <hr />
+
+    <div style="margin-top: 5px; margin-left: 150px;">
+        <strong>选择银行：</strong>
+        <p>
+            <br />
+            <input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked" />工商银行 &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="pd_FrpId" value="BOC-NET-B2C" />中国银行 &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="pd_FrpId" value="ABC-NET-B2C" />农业银行  <br /> <br />
+            <input type="radio" name="pd_FrpId" value="BOCO-NET-B2C" />交通银行 &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="pd_FrpId" value="PINGANBANK-NET" />平安银行&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="pd_FrpId" value="CCB-NET-B2C" />建设银行  <br /> <br />
+            <input type="radio" name="pd_FrpId" value="CEB-NET-B2C" />光大银行 &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C" />招商银行
+        </p>
+        <hr />
+        <p style="text-align: right; margin-right: 100px;">
+            <a href="../client/UserOrder.jsp" class="pay"><img src="../images/pay.jpg" width="50" height="50"></a>
+        </p>
+        <hr />
+
+    </div>
 </div>
 
 
@@ -121,7 +164,6 @@
     var theTable = document.getElementById("table2");
     var totalPage = document.getElementById("spanTotalPage");
     var pageNum = document.getElementById("spanPageNum");
-
     var spanPre = document.getElementById("spanPre");
     var spanNext = document.getElementById("spanNext");
     var spanFirst = document.getElementById("spanFirst");
