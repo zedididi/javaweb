@@ -51,6 +51,8 @@
                    placement="bottom"  data-toggle="modal" data-target="#myModal"></a>
                 <a class="register" href="client/register.html" rel="tooltip" data-placement="bottom"
                    data-toggle="modal" data-target="#myModal"></a>
+                <a class="home" rel="tooltip" data-placement="bottom" data-
+                   placement="bottom" data-toggle="modal" href="javascript:void(0)" onclick="location.reload()"></a>
             </div>
         </div>
     </div>
@@ -81,7 +83,7 @@
     </div><%--左侧菜单div控制--%>
     <div class="col-md-10" id="book">
 
-        <div id="myCarousel" class="carousel slide" style="width: 90%;">
+        <div id="myCarousel" class="carousel slide" style="width: 88.5%;">
             <!-- 轮播（Carousel）指标 -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -108,6 +110,9 @@
                data-slide="prev"> <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
             <a class="carousel-control right" href="#myCarousel"
                data-slide="next">&rsaquo;</a>
+        </div>
+        <div style="position: relative;left: 100px">
+            <img src="images/重磅推荐.jpg">
         </div>
 
 
