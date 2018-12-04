@@ -24,7 +24,6 @@
         }
         .item_head{
             margin-left: 18.25%;
-            /*text-align: center;*/
         }
         .item_body{
             position: relative;
@@ -74,8 +73,6 @@
             <p style="color: red">￥<%=rs.getString("price")%></p>
             </div>
         </div>
-
-
         <div class="modal fade" id="<%=rs.getString("name")%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

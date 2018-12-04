@@ -1,7 +1,14 @@
+<%@ page import="controller.transform" %>
 <%@ page import="dao.orderUtil" %>
+<%@ page import="model.BookModel" %>
+<%@ page import="model.order" %>
+<%@ page import="model.orderItem" %>
+<%@ page import="model.user" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.*" %><%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: Yang
   Date: 2018/11/29
@@ -29,18 +36,21 @@
 <body>
 <%
     request.setCharacterEncoding("utf-8");
-    String userid= String.valueOf(1);
-    userOrders userOrders=new orderUtil().getUserOrders(Integer.parseInt(userid,-1));
-    ArrayList<order> orderArrayList=userOrders.getOrderArrayList();
+    user user= (model.user) request.getSession().getAttribute("user");
+    HashMap<Integer, Map.Entry<BookModel,Integer>> shoppingCar= (HashMap<Integer, Map.Entry<BookModel, Integer>>) request.getSession().getAttribute("ShoppingCar");//获取购物车内容
+    order order=null;
+    if (user!=null)            //当用户已登录
+        order=new transform().getOrder(shoppingCar, Integer.parseInt(user.getId()));  //把购物车的格式转换成order类型
+    if (order!=null){         //当购物车不为空，且用户已登陆
+        order.setDate(new Date());
+    System.out.println("getOrder.jsp+order: "+order);
+
     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 %>
 <div align="center">全部订单</div>
 <hr color="#5f9ea0">
 <input type="checkbox" name="selectAll" value="value" id="check" >全选<a href="#bottom" style="float: right;text-decoration: none;">直达底部</a>
-<%
-    for (order order:orderArrayList
-    ) {
-%>
+
 <table id="table1">
     <tbody id="table2">
     <tr bgcolor="#5f9ea0">
@@ -53,13 +63,14 @@
         <th width="10%">交易状态</th>
     </tr>
     <%
+
         ArrayList<orderItem> orderItemArrayList=order.getOrderItemArrayList();
         for (model.orderItem orderItem:orderItemArrayList
         ) {
     %>
     <tr>
         <td><input type="checkbox" name="item" value="value" ></td>
-        <td><img src=" <%=orderItem.getBook().getImage()%>" width="100" height="100"></br>
+        <td><img src="<%=orderItem.getBook().getImage()%>" width="100" height="100"></br>
             <%=orderItem.getBook().getName()%></td>
         <td><%=sdf.format(order.getDate())%></td>
         <td><%=orderItem.getQuantity()%></td>
@@ -72,11 +83,13 @@
     %>
     </tbody>
 </table>
+
 <center>
     <span id="spanFirst">第一页</span> <span id="spanPre">上一页</span> <span id="spanNext">下一页</span> <span id="spanLast">最后一页</span> 第<span id="spanPageNum"></span>页/共<span id="spanTotalPage"></span>页
 </center>
 <%
-    }
+    }else
+        out.print("你未登录，无法结算！！！！！！");
 %>
 <%--设置bottom，实现直达底部功能--%>
 <div name="bottom" style="position:fixed ; bottom:0px;width: 1500px;">

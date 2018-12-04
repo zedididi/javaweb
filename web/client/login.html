@@ -6,6 +6,12 @@
     <title>login</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+    <style>
+        div.modal-body{
+            margin-left: 15%;
+            width: 70%;
+        }
+    </style>
 </head>
 <body>
 <script type="text/javascript">
@@ -24,7 +30,7 @@
     <h1 class="text-center">登录</h1>
 </div>
 <div class="modal-body">
-    <form name="login" class="form-group" action="../controller/loginServlet" method="post" accept-charset="utf-8">
+    <form name="login" class="form-group" action="/loginServlet" method="post" accept-charset="utf-8">
         <div class="form-group">
             <label>用户名</label>
             <input name="username" class="form-control" type="text" placeholder="请输入用户名" >
@@ -36,7 +42,7 @@
         <div class="form-group">
             <label>验证码</label>
             <input name="code" id="code" type="text" size="10">
-            <img src="client/validate.jsp" name="imgValidate" onclick="refresh()">
+            <img src="validate.jsp" name="imgValidate" onclick="refresh()">
         </div>
         <div class="text-right">
             <button class="btn btn-primary" type="submit">登录</button>
