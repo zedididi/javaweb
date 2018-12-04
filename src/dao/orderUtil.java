@@ -9,8 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 /**
  * @auther: Liu Zedi.
@@ -51,7 +50,6 @@ public class orderUtil {
                     book book=new book(book_id,book_name,book_author,book_price,book_image,book_dec,category_id,category_name);
                     orderItem=new orderItem(orderitem_id,orderitem_quantity,orderitem_price,book);
 
-                   // System.out.println("orderitme:"+orderItem);
                 }
             }
                 conn.close();
@@ -96,7 +94,6 @@ public class orderUtil {
                 }
                 if (result) {
                     order = new order(id, order_date, order_price, order_state,orderItemArrayList);
-                   // System.out.println(order);
                 }
             }
             conn.close();
@@ -116,6 +113,15 @@ public class orderUtil {
         userOrders userOrders=null;
         ResultSet set=null;
         boolean result=false;
+        Comparator<order> orderComparator=new Comparator<order>() {
+            @Override
+            public int compare(order o1, order o2) {
+                if (o2.getDate().compareTo(o1.getDate())!=0)
+                    return o2.getDate().compareTo(o1.getDate());
+                else
+                    return o1.getId()-o2.getId();
+            }
+        };
         ArrayList<order> orderArrayList=new ArrayList<>();
         order order=null;
         double price=0;
@@ -147,8 +153,8 @@ public class orderUtil {
                 }
 
                 if (result){
+                    Collections.sort(orderArrayList,orderComparator);
                     userOrders=new userOrders(id,user_name,user_phone,price,orderArrayList);
-                    /*System.out.println(userOrders);*/
                 }
             }
             conn.close();
@@ -157,6 +163,7 @@ public class orderUtil {
         }
 
         System.out.println(userOrders);
+
         return userOrders;
     }
 

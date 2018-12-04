@@ -45,7 +45,7 @@
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 %>
 <div id="table1">
-<table class="hovertable" border="1" width="100%">
+<table  border="1" width="100%">
     <caption><h2>已完成订单</h2></caption>
     <tr>
         <th>用户ID</th>
@@ -65,7 +65,7 @@
                 for (order order:orderArrayList
                      ) {
  %>
-<table class="hovertable" border="1" width="100%">
+<table border="1" class="hovertable" width="100%">
     <tr>
         <th>订单号</th>
         <th>订单时间</th>
@@ -79,7 +79,7 @@
         <td>已完成</td>
     </tr>
 </table>
-<table class="hovertable" width="100%" border="1">
+<table  width="100%" border="1">
     <tr>
         <th>子订单号</th>
         <th>书本序号</th>

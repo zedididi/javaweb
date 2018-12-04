@@ -100,4 +100,12 @@
         <servlet-name>adminLogoffServlet</servlet-name>
         <url-pattern>/adminLogoffServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteServlet</servlet-name>
+        <servlet-class>controller.deleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/deleteServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

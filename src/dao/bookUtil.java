@@ -136,7 +136,7 @@ public class bookUtil {
 
     //插入book
     public boolean insertBook(BookModel book){
-        boolean result=false;
+
         int i=0;
         Connection conn=new getConn().getConn();
         String sql="insert into book(name,author,price,image,description,category_id) values(?,?,?,?,?,?);";
@@ -151,7 +151,7 @@ public class bookUtil {
                 i=pstate.executeUpdate();
 
                 if (i > 0) {
-                    result=true;
+                    return true;
                    // System.out.println("book 插入成功"+new bookUtil().getBook(0,book.getName()));
                 }
             }
@@ -160,12 +160,11 @@ public class bookUtil {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-        return result;
+        return false;
     }
 
     //插入category
     public boolean insertCategory(category category){
-        boolean result=false;
         int i=0;
         Connection conn=new getConn().getConn();
         String sql="insert into category(name,description) values(?,?);";
@@ -176,7 +175,7 @@ public class bookUtil {
                 pstat.setString(2,category.getDescription());
                 i=pstat.executeUpdate();
                 if (i > 0) {
-                    result=true;
+                    return true;
                     //System.out.println("category 插入成功"+category);
                 }
             }
@@ -185,14 +184,13 @@ public class bookUtil {
             e.printStackTrace();
         }
 
-        return result;
+        return false;
     }
 
     //修改book  要求：有book表的全部属性
     //修改就是都修改，在后端修改了属性某个或者都修改了，把所有的属性都加入到book中
     public boolean updateBook(BookModel book){
 
-        boolean result=false;
         Connection conn=new getConn().getConn();
         int i=0;
         String sql="update book set name=?,author=?,price=?,image=?,description=?,category_id=? where id=?;";
@@ -209,7 +207,7 @@ public class bookUtil {
                 i=pstat.executeUpdate();
 
                 if (i>0){
-                    result=true;
+                    return true;
                     //System.out.println("book更新成功："+new bookUtil().getBook(book.getId(),null));
                 }
             }
@@ -218,6 +216,30 @@ public class bookUtil {
             e.printStackTrace();
         }
 
-        return result;
+        return false;
+    }
+
+    public boolean deleteBook(int id){
+        Connection conn=new getConn().getConn();
+        int i=0;
+        String sql="delete from book where id=?;";
+        try{
+            try(PreparedStatement pstat=conn.prepareStatement(sql)){
+                pstat.setInt(1,id);
+                i=pstat.executeUpdate();
+
+                if (i>0)
+                    return true;
+            }
+
+
+
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return false;
     }
 }

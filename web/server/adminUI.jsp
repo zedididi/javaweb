@@ -33,7 +33,6 @@
     response.setHeader("Pragma", "no-cache"); //HTTP 1.0
     response.setDateHeader("Expires", -1); //prevents caching at the proxy server
     admin admin= (model.admin) session.getAttribute("admin");
-    System.out.println("adminUI"+admin);
     if (admin==null)
         response.sendRedirect("admin.html");
 %>
@@ -47,9 +46,9 @@
             <div class="links span8">
                 <a  href='showAdmin.jsp' rel="tooltip"  data-
                    placement="bottom" data-toggle="modal" data-target="#myModal"
-                ><%=admin.getAdminName()%></a>
+                ><img src="graphic.jsp?img=<%=admin.getAdminName()%>"></a>
                 <a  href="/adminLogoffServlet" onclick="clear()" rel="tooltip" data-placement="bottom"
-                   >注销</a>
+                   ><img src="graphic.jsp?img=注销"></a>
             </div>
         </div>
     </div>
@@ -68,6 +67,7 @@
             <li><a href='javascript:setIframe("getBook.jsp")'>书籍信息查询</a></li>
             <li><a href='javascript:setIframe("updateBook.jsp")'>书籍信息修改</a> </li>
             <li><a href='javascript:setIframe("addBook.jsp")'>书籍信息输入</a> </li>
+            <li><a href='javascript:setIframe("deleteBook.jsp")'>书籍信息删除</a> </li>
         </ul>
     </div><%--左侧菜单div控制--%>
 
