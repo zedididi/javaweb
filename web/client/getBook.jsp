@@ -31,7 +31,7 @@
     while (rs.next()) {
 
 %>
-<div class="col-sm-9 col-md-2" >
+<div class="col-sm-9 col-md-2" style="width: 15%">
     <div class="thumbnail"  style="background-color: #b0e5ff;">
         <div style="text-align: center;opacity: 1">
         <a href="" class="btn btn-default" role="button" data-toggle="modal" data-target="#<%=rs.getString("name")%>"><img width="150px" height="200px" src=<%=rs.getString("image")%>></a>
@@ -63,7 +63,7 @@
 
                 <div align="left"><img src="<%=rs.getString("image")%>"></div>
                 <p>作者：<%=rs.getString("author")%></p>
-                <p>售价：￥<%=rs.getString("price")%></p>
+                <p style="color: red">售价：￥<%=rs.getString("price")%></p>
                 <button class="btn btn-primary" onclick="addBook(<%=rs.getString("id")%>)">加入购物车</button><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div><!-- /.modal-content -->
