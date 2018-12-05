@@ -34,27 +34,34 @@ public class loginServlet extends HttpServlet {
         String password = request.getParameter("password");
         userUtil u=new userUtil();
 
+
         user user=u.getUser(0,username);
-        String userPassword = user.getPassword();
-        String code = request.getParameter("code");
-        HttpSession session = request.getSession();
-        String randStr = (String) session.getAttribute("randStr");
-        System.out.println("randStr"+randStr);
-        PrintWriter out = response.getWriter();
-        if (!code.equals(randStr)) {
+        if(user!=null) {
+            String userPassword = user.getPassword();
+            String code = request.getParameter("code");
+            HttpSession session = request.getSession();
+            String randStr = (String) session.getAttribute("randStr");
+            System.out.println("randStr" + randStr);
+            PrintWriter out = response.getWriter();
+            if (!code.equals(randStr)) {
                 out.println("验证码有误");
-        } else {
-            if (userPassword != null && userPassword.equals(password)) {
-                    session.setAttribute("user", user);
-                    System.out.println("login:"+session.getAttribute("user"));
-                   // request.getRequestDispatcher("/index.jsp").forward(request, response);
-                    response.sendRedirect("/index.jsp");
             } else {
+                if (userPassword != null && userPassword.equals(password)) {
+                    session.setAttribute("user", user);
+                    System.out.println("login:" + session.getAttribute("user"));
+                    // request.getRequestDispatcher("/index.jsp").forward(request, response);
+                    response.sendRedirect("/index.jsp");
+                } else {
                     System.out.println("name 为空 ");
                     JOptionPane.showMessageDialog(null, "wrong");
                     response.sendRedirect("/client/login.html");
                 }
             }
+        }else {
+            System.out.println("name 为空 ");
+            JOptionPane.showMessageDialog(null, "wrong");
+            response.sendRedirect("/client/login.html");
+        }
 
 
     }

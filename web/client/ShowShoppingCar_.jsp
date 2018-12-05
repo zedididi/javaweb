@@ -60,8 +60,8 @@
 
 <div class="top_user">
     <input type="checkbox" onclick="selectAll(this)"/>全选
-    <button style="float: right"><a href="" class="userInfo">用户</a></button>&nbsp;&nbsp;
-    <button style="float: right"><a href="" class="clean">注销</a></button>
+    <a style="float: right" href="../index.jsp"><img src="../images/home.png"></a>
+
 </div>
     <table id="table1" class="main"  width="100%">
         <tbody id="table2">
@@ -139,7 +139,7 @@
         }
         if (selected == 0){
             document.getElementById("selectedNum").innerHTML = "已选商品" + selected +"件";
-            document.getElementById("total").innerHTML = "合计0¥";
+            document.getElementById("total").innerHTML = "合计￥0";
         }
         var url = "/BalanceServlet?BookIDs=" + bookIDs;
         xmlHttp.open("POST",url,true);
@@ -147,7 +147,7 @@
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
                 var array = xmlHttp.responseText.split(" ");
                 document.getElementById("selectedNum").innerHTML = "已选商品" + array[0] +"件";
-                document.getElementById("total").innerHTML = "合计" +array[1] +"¥";
+                document.getElementById("total").innerHTML = "合计" +"￥"+array[1] ;
             }
         }
         xmlHttp.send();

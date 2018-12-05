@@ -40,6 +40,7 @@ public class resumeServlet extends HttpServlet {
         response.addCookie(userCookie);
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        response.sendRedirect("../index.jsp");
         out.println("<html><title>get cookies</title>");
         out.println("<body><h2>A cookie has been got from brower</h2>");
         out.println("UserName:" + user.getUsername() + "<br>");
