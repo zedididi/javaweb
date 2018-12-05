@@ -110,5 +110,8 @@ hs_err_pid*
 web\WEB-INF\classes
 testMian
 client/showID.jsp
-.idea
 src/dao/getConn.java
+conf/
+lib/
+src/service/
+web/images/temp/

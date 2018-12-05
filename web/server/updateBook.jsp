@@ -107,7 +107,7 @@
             <legend>书籍信息修改</legend>
             <div class="form-group">
                 <label>序号：</label>
-                <input name="bookId" class="form-control" type="text" value="<%=book.getId()%>" placeholder="中文、英文、数字包括下划线"  pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$" required disabled="disabled">
+                <input name="bookId" class="form-control" type="text" value="<%=book.getId()%>" placeholder="中文、英文、数字包括下划线"  pattern="^[\u4E00-\u9FA5A-Za-z0-9_]+$" required readonly>
             </div>
             <div class="form-group">
                 <label>书名：</label>
@@ -144,7 +144,7 @@
             <%--<input type="radio">--%>
             <div class="form-group">
                 <label>图片：</label>
-                <input type="file" class="form-control"  placeholder="请选择图片" required name="photo">
+                <input type="file" class="form-control"  placeholder="请选择图片"  name="photo">
             </div>
 
         </fieldset>

@@ -36,6 +36,7 @@ import java.util.UUID;
 
 @WebServlet(name = "updateAndChangeBookServlet")
 public class updateAndChangeBookServlet extends HttpServlet {
+    boolean image=false;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setCharacterEncoding("utf-8");
@@ -99,6 +100,7 @@ public class updateAndChangeBookServlet extends HttpServlet {
                     String name1 = item.getFieldName();
                     //解决普通输入项的数据的中文乱码问题
                     String value = item.getString("UTF-8");
+                    System.out.println(name1+"+++"+value);
                     //value = new String(value.getBytes("iso8859-1"),"UTF-8");
                     if (name1.equals("bookId"))
                         //解决普通输入项的数据的中文乱码问题
@@ -116,6 +118,7 @@ public class updateAndChangeBookServlet extends HttpServlet {
 
                 }else{//如果fileitem中封装的是上传文件
                     //得到上传的文件名称，
+                    image=true;
                     String filename = item.getName();
                     System.out.println(filename);
                     if(filename==null || filename.trim().equals("")){
@@ -188,7 +191,10 @@ public class updateAndChangeBookServlet extends HttpServlet {
             request.getRequestDispatcher("/server/addBook.jsp").forward(request, response);
 
         }else {          //前端执行修改操作
-            bookUtil.updateBook(new BookModel(Integer.parseInt(bookId), name, author, Double.parseDouble(price), imagesPath, description, category_id));
+            if (image)    //修改了图片
+                bookUtil.updateBook(new BookModel(Integer.parseInt(bookId), name, author, Double.parseDouble(price), imagesPath, description, category_id));
+            else  //没有修改图片
+                bookUtil.updateBook(new BookModel(Integer.parseInt(bookId), name, author, Double.parseDouble(price), bookUtil.getBook(Integer.parseInt(bookId),null).getImage(), description, category_id));
             request.setAttribute("message",message);
             request.setAttribute("id",bookId);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);

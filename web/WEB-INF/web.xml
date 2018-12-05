@@ -116,4 +116,20 @@
         <servlet-name>userLogoffServlet</servlet-name>
         <url-pattern>/userLogoffServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>insertServlet</servlet-name>
+        <servlet-class>controller.insertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>insertServlet</servlet-name>
+        <url-pattern>/insertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>registerServlet</servlet-name>
+        <servlet-class>controller.registerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerServlet</servlet-name>
+        <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

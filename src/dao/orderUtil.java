@@ -5,11 +5,9 @@ import model.order;
 import model.orderItem;
 import model.userOrders;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 /**
  * @auther: Liu Zedi.
@@ -76,7 +74,7 @@ public class orderUtil {
         orderUtil orderUtil=new orderUtil();
 
 
-        String sql="select orderitem.id,orders.ordertime,orders.price,orders.state from orderitem,orders where orderitem.order_id=orders.id and orders.id=?;";
+        String sql="select orderitem.id,orders.ordertime,orders.price,orders.state ,user_id from orderitem,orders where orderitem.order_id=orders.id and orders.id=?;";
         try{
             try(PreparedStatement pstat=conn.prepareStatement(sql)){
                 pstat.setInt(1,id);
@@ -88,7 +86,6 @@ public class orderUtil {
                     order_date= new Date((Long) set.getObject(2)) ;
                     order_price=set.getDouble(3);
                     order_state=set.getBoolean(4);
-
                     orderItem=orderUtil.getOrderItem(orderitem_id);
                     orderItemArrayList.add(orderItem);
                 }
@@ -100,7 +97,6 @@ public class orderUtil {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return order;
     }
@@ -139,6 +135,8 @@ public class orderUtil {
                     pstat.setBoolean(2,false);
                 else if(state==1)
                     pstat.setBoolean(2,true);
+
+                System.out.println(sql);
                 set=pstat.executeQuery();
 
                 while (set.next()){
@@ -147,7 +145,7 @@ public class orderUtil {
                     int orders_id=set.getInt(1);
                     user_name=set.getString(2);
                     user_phone=set.getString(3);
-                    order=new orderUtil().getOrder(orders_id);
+                    order=getOrder(orders_id);
                     price+=order.getPrice();
                     orderArrayList.add(order);
                 }
@@ -300,4 +298,39 @@ public class orderUtil {
     }
 
 
+    public order getAOrderB_2(order order) {
+        Connection conn=new getConn().getConn();
+        ResultSet set=null;
+        orderItem orderItem=null;
+        ArrayList<orderItem> orderItemArrayList=new ArrayList<>();
+        boolean result=false;
+
+        java.util.Date order_date=null;
+        double order_price=0;
+        boolean order_state = false;
+        String user_id=null;
+        orderUtil orderUtil=new orderUtil();
+        Timestamp timestamp=new Timestamp(order.getDate().getTime());
+
+
+        String sql="select id from orders where ordertime=?,price=?,state=?,user_id=?;";
+        try{
+            try(PreparedStatement pstat=conn.prepareStatement(sql)){
+               pstat.setTimestamp(1,timestamp);
+               pstat.setDouble(2,order.getPrice());
+               pstat.setBoolean(3,order.isState());
+               pstat.setString(4,order.getUser_id());
+                set=pstat.executeQuery();
+
+               if(set.next())
+                   order.setId(set.getInt(1));
+
+            }
+            conn.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return order;
+    }
 }
