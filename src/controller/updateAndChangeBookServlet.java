@@ -36,7 +36,7 @@ import java.util.UUID;
 
 @WebServlet(name = "updateAndChangeBookServlet")
 public class updateAndChangeBookServlet extends HttpServlet {
-    boolean image=false;
+    boolean image=true;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setCharacterEncoding("utf-8");
@@ -118,10 +118,15 @@ public class updateAndChangeBookServlet extends HttpServlet {
 
                 }else{//如果fileitem中封装的是上传文件
                     //得到上传的文件名称，
-                    image=true;
+
                     String filename = item.getName();
+                   /* if (filename!=null) {
+                        image = true;
+                        System.out.println("上传了w文件"+image);
+                    }*/
                     System.out.println(filename);
                     if(filename==null || filename.trim().equals("")){
+                        image=false;
                         continue;
                     }
                     //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
@@ -193,8 +198,10 @@ public class updateAndChangeBookServlet extends HttpServlet {
         }else {          //前端执行修改操作
             if (image)    //修改了图片
                 bookUtil.updateBook(new BookModel(Integer.parseInt(bookId), name, author, Double.parseDouble(price), imagesPath, description, category_id));
-            else  //没有修改图片
-                bookUtil.updateBook(new BookModel(Integer.parseInt(bookId), name, author, Double.parseDouble(price), bookUtil.getBook(Integer.parseInt(bookId),null).getImage(), description, category_id));
+            else { //没有修改图片
+                System.out.println(bookUtil.getBook(Integer.parseInt(bookId), null).getImage());
+                bookUtil.updateBook(new BookModel(Integer.parseInt(bookId), name, author, Double.parseDouble(price), bookUtil.getBook(Integer.parseInt(bookId), null).getImage(), description, category_id));
+            }
             request.setAttribute("message",message);
             request.setAttribute("id",bookId);
             request.getRequestDispatcher("/server/updateBook.jsp").forward(request, response);
