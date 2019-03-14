@@ -1,5 +1,5 @@
 # online book store
-使用技术 ： JSP-Mysql                     
+使用技术 ： JSP-Servlet-Mysql                     
 数据库 ：Mysql   
 IDE ：IDEA
 
